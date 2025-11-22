@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - v01dworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f9ff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --primary-color: #0ea5e9;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --border-color: #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --text-color: #cbd5e1;
+                --heading-color: #f8fafc;
+                --primary-color: #38bdf8;
+                --card-bg: #1e293b;
+                --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+                --border-color: #334155;
+            }
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 3rem 2rem; 
+        }
+        header { 
+            margin-bottom: 3rem; 
+            border-bottom: 1px solid var(--border-color); 
+            padding-bottom: 2rem; 
+        }
+        .back-link { 
+            font-size: 0.9rem; 
+            color: #64748b; 
+            text-decoration: none; 
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--primary-color); }
+        
+        h1 { 
+            text-transform: capitalize; 
+            color: var(--heading-color); 
+            margin-bottom: 1rem; 
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .post-preview { 
+            background: var(--card-bg);
+            border: 1px solid var(--border-color); 
+            padding: 2rem; 
+            margin-bottom: 1.5rem; 
+            border-radius: 12px; 
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s;
+        }
+        .post-preview:hover {
+            transform: translateY(-2px);
+        }
+        .post-preview h3 {
+            margin-top: 0;
+            color: var(--heading-color);
+            font-size: 1.5rem;
+        }
+        .post-date { 
+            color: #94a3b8; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        /* Header Socials */
+        .header-socials { display: flex; gap: 1.25rem; margin-top: 1.5rem; flex-wrap: wrap; align-items: center; }
+        .header-socials a { color: var(--text-color); font-size: 1.4rem; transition: color 0.2s; }
+        .header-socials a:hover { color: var(--primary-color); }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <header>
+        <a href="../home/index.html" class="back-link">← Back to v01dworks.com</a>
+        <h1 id="blog-title">Blog</h1>
+        <div id="header-socials" class="header-socials"></div>
+    </header>
+
+    <main id="content">
+        <p>Select a category from the home page to view posts.</p>
+    </main>
+    </div>
+
+    <script>
+        // Simple script to simulate different subdomains/blogs based on query param
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+
+        if (category) {
+            document.title = `${category.charAt(0).toUpperCase() + category.slice(1)} Blog - v01dworks`;
+            document.getElementById('blog-title').textContent = `${category} Blog`;
+            
+            // Inject social links based on category
+            const socialsContainer = document.getElementById('header-socials');
+            
+            if (category === 'gamedev') {
+                socialsContainer.innerHTML = `
+                    <!-- Storefronts -->
+                    <a href="#" title="Steam"><i class="fa-brands fa-steam"></i></a>
+                    <a href="#" title="itch.io"><i class="fa-brands fa-itch-io"></i></a>
+                    <a href="#" title="App Store"><i class="fa-brands fa-app-store"></i></a>
+                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
+                    
+                    <!-- Pages -->
+                    <a href="#" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
+                    
+                    <!-- Visual Content -->
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
+
+                    <!-- Personal -->
+                    <a href="#" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="#" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+                `;
+            } else if (category === 'ios') {
+                socialsContainer.innerHTML = `
+                    <a href="#" title="App Store"><i class="fa-brands fa-app-store"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
+                    <a href="#" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="#" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="#" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+                `;
+            } else {
+                // Professional + Casual Professional for backend, tech
+                socialsContainer.innerHTML = `
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
+                    <a href="#" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="#" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="#" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+                `;
+            }
+
+            // In a real app, this would fetch data from your backend API
+            // For prototyping, we'll just show a placeholder
+            document.getElementById('content').innerHTML = `
+                <div class="post-preview">
+                    <h3>Latest in ${category}...</h3>
+                    <p class="post-date">November 22, 2025</p>
+                    <p>This is where your <strong>${category}</strong> posts will appear.</p>
+                    <p><em>(Content loaded from <code>/content/posts/${category}</code>)</em></p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

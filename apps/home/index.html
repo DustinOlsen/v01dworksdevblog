@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v01dworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f9ff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --primary-color: #0ea5e9; /* Sky blue */
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --accent-color: #0284c7;
+            --border-color: #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;     /* Very dark slate */
+                --text-color: #cbd5e1;   /* Light slate text */
+                --heading-color: #f8fafc; /* Almost white */
+                --primary-color: #38bdf8; /* Lighter sky blue for contrast */
+                --card-bg: #1e293b;      /* Dark slate card */
+                --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+                --accent-color: #7dd3fc;
+                --border-color: #334155;
+            }
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 3rem 2rem; 
+        }
+        h1 { 
+            color: var(--heading-color); 
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+        }
+        
+        /* Navigation Cards */
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+        nav a { 
+            display: block;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none; 
+            color: var(--heading-color); 
+            font-weight: 600;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Social Section Styles */
+        .socials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .social-category {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+        .social-category h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
+            font-weight: 800;
+        }
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .social-links li {
+            margin-bottom: 0.75rem;
+        }
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+        .social-links a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        .social-links a:hover i {
+            color: var(--primary-color);
+        }
+        
+        .kofi-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #FF5E5B;
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .kofi-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 94, 91, 0.3);
+            color: white;
+        }
+        .kofi-btn i { color: white !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Welcome to v01dworks</h1>
+    <p class="subtitle">My personal portfolio and hub.</p>
+    
+    <nav>
+        <ul>
+            <li><a href="../blogs/index.html?category=backend">Backend Blog</a></li>
+            <li><a href="../blogs/index.html?category=gamedev">Gamedev Blog</a></li>
+            <li><a href="../blogs/index.html?category=ios">iOS Blog</a></li>
+            <li><a href="../blogs/index.html?category=tech">Tech Blog</a></li>
+        </ul>
+    </nav>
+
+    <section class="socials-grid">
+        <div class="social-category">
+            <h3>Game Dev</h3>
+            <ul class="social-links">
+                <li><a href="#"><i class="fa-brands fa-steam"></i> Steam</a></li>
+                <li><a href="#"><i class="fa-brands fa-itch-io"></i> itch.io</a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                <li><a href="#"><i class="fa-brands fa-threads"></i> Threads</a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+            </ul>
+        </div>
+
+        <div class="social-category">
+            <h3>Professional</h3>
+            <ul class="social-links">
+                <li><a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="#"><i class="fa-brands fa-github"></i> GitHub</a></li>
+            </ul>
+        </div>
+
+        <div class="social-category">
+            <h3>Social & Updates</h3>
+            <ul class="social-links">
+                <li><a href="#"><i class="fa-brands fa-threads"></i> Threads</a></li>
+                <li><a href="#"><i class="fa-brands fa-bluesky"></i> Bluesky</a></li>
+                <li><a href="#"><i class="fa-brands fa-mastodon"></i> Mastodon</a></li>
+            </ul>
+        </div>
+
+        <div class="social-category">
+            <h3>Support</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">If you like what I do, consider buying me a coffee!</p>
+            <a href="#" class="kofi-btn"><i class="fa-solid fa-mug-hot"></i> Support on Ko-Fi</a>
+        </div>
+    </section>
+    </div>
+</body>
+</html>
