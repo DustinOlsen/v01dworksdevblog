@@ -1,10 +1,10 @@
 ---
 title: "Setting Up This Website"
-date: "2023-11-24"
+date: "2025-11-24"
 category: "tech"
 ---
 
-Server & Docker Setup
+# Server & Docker Setup
 	•	Set up a Debian VPS for hosting multiple projects.
 	•	Installed Docker and Docker Compose on the VPS.
 	•	Cloned your Git repository containing the Docker files for the demo app.
@@ -14,14 +14,14 @@ Server & Docker Setup
 
 ⸻
 
-Domain & DNS
+# Domain & DNS
 	•	Verified that your main domain (v01dworks.com) resolves to your VPS.
 	•	Created an A record for the subdomain demo.v01dworks.com pointing to the VPS IP.
 	•	Tested DNS propagation (ping demo.v01dworks.com) to confirm it resolves correctly.
 
 ⸻
 
-Nginx Reverse Proxy
+# Nginx Reverse Proxy
 	•	Installed Nginx on the VPS.
 	•	Created a new server block in /etc/nginx/sites-available/demo.v01dworks.com for the subdomain.
 	•	Configured the server block as a reverse proxy pointing to the Docker container (API on port 8000).
@@ -31,13 +31,13 @@ Nginx Reverse Proxy
 
 ⸻
 
-Tools / Utilities
+# Tools / Utilities
 	•	Installed tmux to manage long-running terminal sessions.
 	•	Confirmed Docker containers stay up and logs can be viewed while detached.
 
 ⸻
 
-Next Planned Steps
+# Next Planned Steps
 	•	Set up Certbot to issue a free SSL certificate for demo.v01dworks.com.
 	•	Configure automatic HTTPS redirection via Nginx.
 	•	Plan for multiple Docker containers with different subdomains (e.g., main site, demo app, future projects).
