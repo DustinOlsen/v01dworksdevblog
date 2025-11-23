@@ -139,8 +139,8 @@
 
         // --- 1. VIEWING A SINGLE POST ---
         if (postPath) {
-            document.getElementById('blog-title').textContent = "Reading Article";
-            document.title = "Reading Article - v01dworks";
+            document.getElementById('blog-title').textContent = "Loading...";
+            document.title = "v01dworks Blog";
             
             // Hide socials on single post view to keep it clean
             document.getElementById('header-socials').style.display = 'none';
@@ -154,12 +154,31 @@
                     return response.text();
                 })
                 .then(markdown => {
+                    // Extract Frontmatter
+                    const frontmatterMatch = markdown.match(/^---([\s\S]*?)---/);
+                    let title = "Blog Post";
+                    let date = "";
+                    
+                    if (frontmatterMatch) {
+                        const frontmatter = frontmatterMatch[1];
+                        const titleMatch = frontmatter.match(/title:\s*(["']?)(.*?)\1\s*$/m);
+                        if (titleMatch) title = titleMatch[2];
+                        
+                        const dateMatch = frontmatter.match(/date:\s*(["']?)(.*?)\1\s*$/m);
+                        if (dateMatch) date = dateMatch[2];
+                    }
+
+                    // Update Page Title
+                    document.getElementById('blog-title').textContent = title;
+                    document.title = `${title} - v01dworks`;
+
                     // Remove frontmatter (the --- block at the top)
                     const content = markdown.replace(/^---[\s\S]*?---/, '');
                     
                     // Render Markdown
                     contentDiv.innerHTML = `
                         <div class="post-content">
+                            ${date ? `<p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem;">${date}</p>` : ''}
                             ${marked.parse(content)}
                         </div>
                         <div style="margin-top: 2rem; text-align: center;">
@@ -169,6 +188,7 @@
                 })
                 .catch(err => {
                     contentDiv.innerHTML = `<p>Error loading post: ${err.message}</p>`;
+                    document.getElementById('blog-title').textContent = "Error";
                 });
 
         } 
