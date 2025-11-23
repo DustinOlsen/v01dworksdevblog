@@ -6,6 +6,8 @@
     <title>Blog - v01dworks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         :root {
             --bg-color: #f0f9ff;
@@ -95,6 +97,21 @@
             margin-bottom: 1rem;
         }
 
+        .post-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+        .post-content h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .post-content h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--heading-color); }
+        .post-content p { margin-bottom: 1rem; }
+        .post-content code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+        .post-content pre { background: #1e293b; color: #f8fafc; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+        .post-content pre code { background: transparent; color: inherit; padding: 0; }
+        .post-content img { max-width: 100%; border-radius: 8px; margin: 1rem 0; }
+
         /* Header Socials */
         .header-socials { display: flex; gap: 1.25rem; margin-top: 1.5rem; flex-wrap: wrap; align-items: center; }
         .header-socials a { color: var(--text-color); font-size: 1.4rem; transition: color 0.2s; }
@@ -118,8 +135,45 @@
         // Simple script to simulate different subdomains/blogs based on query param
         const params = new URLSearchParams(window.location.search);
         const category = params.get('category');
+        const postPath = params.get('post'); // Check if we are viewing a specific post
 
-        if (category) {
+        // --- 1. VIEWING A SINGLE POST ---
+        if (postPath) {
+            document.getElementById('blog-title').textContent = "Reading Article";
+            document.title = "Reading Article - v01dworks";
+            
+            // Hide socials on single post view to keep it clean
+            document.getElementById('header-socials').style.display = 'none';
+
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '<p>Loading post...</p>';
+
+            fetch(postPath)
+                .then(response => {
+                    if (!response.ok) throw new Error("Post not found");
+                    return response.text();
+                })
+                .then(markdown => {
+                    // Remove frontmatter (the --- block at the top)
+                    const content = markdown.replace(/^---[\s\S]*?---/, '');
+                    
+                    // Render Markdown
+                    contentDiv.innerHTML = `
+                        <div class="post-content">
+                            ${marked.parse(content)}
+                        </div>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <a href="javascript:history.back()" class="back-link">← Back to List</a>
+                        </div>
+                    `;
+                })
+                .catch(err => {
+                    contentDiv.innerHTML = `<p>Error loading post: ${err.message}</p>`;
+                });
+
+        } 
+        // --- 2. VIEWING THE LIST OF POSTS ---
+        else if (category) {
             document.title = `${category.charAt(0).toUpperCase() + category.slice(1)} Blog - v01dworks`;
             document.getElementById('blog-title').textContent = `${category} Blog`;
             
@@ -171,54 +225,42 @@
                 `;
             }
 
-            // --- SIMPLE BLOG DATABASE (Placeholders) ---
-            // Eventually, your Backend API will provide this data!
-            const postsDB = [
-                {
-                    title: "Hello World - My Backend Journey",
-                    date: "November 22, 2025",
-                    category: "backend",
-                    excerpt: "This is my first post on my backend dev blog. I'm learning about servers, databases, and APIs.",
-                    link: "#" // You'll link to the full post later
-                },
-                {
-                    title: "Setting up Nginx on a VPS",
-                    date: "November 22, 2025",
-                    category: "tech",
-                    excerpt: "A quick guide on how I deployed this static site using Nginx and a DigitalOcean Droplet.",
-                    link: "#"
-                },
-                {
-                    title: "Why I chose Godot for my next game",
-                    date: "October 15, 2025",
-                    category: "gamedev",
-                    excerpt: "Unity was great, but Godot's node system is changing how I think about game architecture.",
-                    link: "#"
-                }
-            ];
-
-            // Filter posts for the current category
-            const categoryPosts = postsDB.filter(post => post.category === category);
-            
-            const contentDiv = document.getElementById('content');
-            
-            if (categoryPosts.length > 0) {
-                contentDiv.innerHTML = categoryPosts.map(post => `
-                    <div class="post-preview">
-                        <h3><a href="${post.link}" style="text-decoration:none; color:inherit;">${post.title}</a></h3>
-                        <p class="post-date">${post.date}</p>
-                        <p>${post.excerpt}</p>
-                        <a href="${post.link}" style="color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Read more →</a>
-                    </div>
-                `).join('');
-            } else {
-                contentDiv.innerHTML = `
-                    <div class="post-preview" style="text-align: center; color: #666;">
-                        <p>No posts found for <strong>${category}</strong> yet.</p>
-                        <p>Check back soon!</p>
-                    </div>
-                `;
-            }
+            // Fetch the posts.json file generated by our script
+            fetch('posts.json')
+                .then(response => response.json())
+                .then(postsDB => {
+                    // Filter posts for the current category
+                    const categoryPosts = postsDB.filter(post => post.category === category);
+                    
+                    const contentDiv = document.getElementById('content');
+                    
+                    if (categoryPosts.length > 0) {
+                        contentDiv.innerHTML = categoryPosts.map(post => `
+                            <div class="post-preview">
+                                <h3><a href="?post=${post.path}" style="text-decoration:none; color:inherit;">${post.title}</a></h3>
+                                <p class="post-date">${post.date}</p>
+                                <p>${post.excerpt}</p>
+                                <a href="?post=${post.path}" style="color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 0.9rem;">Read more →</a>
+                            </div>
+                        `).join('');
+                    } else {
+                        contentDiv.innerHTML = `
+                            <div class="post-preview" style="text-align: center; color: #666;">
+                                <p>No posts found for <strong>${category}</strong> yet.</p>
+                                <p>Check back soon!</p>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(err => {
+                    console.error("Could not load posts.json", err);
+                    document.getElementById('content').innerHTML = `
+                        <div class="post-preview">
+                            <p>Loading posts...</p>
+                            <p><em>(If this persists, make sure you ran 'python3 scripts/generate_index.py')</em></p>
+                        </div>
+                    `;
+                });
         }
     </script>
 </body>
