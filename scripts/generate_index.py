@@ -8,14 +8,19 @@ OUTPUT_FILE = '../apps/blogs/posts.json'
 
 # Regex to parse frontmatter (simple version)
 # Looks for content between two --- lines at the start of the file
-FRONTMATTER_PATTERN = re.compile(r'^---\s*\n(.*?)\n---\s*\n', re.DOTALL)
+# Updated to be more permissive with whitespace and EOF
+FRONTMATTER_PATTERN = re.compile(r'^---\s*\n(.*?)\n---\s*$', re.DOTALL | re.MULTILINE)
 
 def parse_frontmatter(content):
-    match = FRONTMATTER_PATTERN.match(content)
+    # strip() helps remove leading whitespace/newlines before matching
+    match = FRONTMATTER_PATTERN.match(content.strip())
     metadata = {}
     if match:
         yaml_block = match.group(1)
         for line in yaml_block.split('\n'):
+            line = line.strip()
+            if not line or line.startswith('#'): continue
+            
             if ':' in line:
                 key, value = line.split(':', 1)
                 metadata[key.strip()] = value.strip().strip('"').strip("'")
@@ -34,6 +39,7 @@ def generate_index():
         for file in files:
             if file.endswith('.md'):
                 file_path = os.path.join(root, file)
+                print(f"Processing {file}...", end=" ")
                 
                 with open(file_path, 'r', encoding='utf-8') as f:
                     content = f.read()
@@ -42,6 +48,7 @@ def generate_index():
                 
                 # Only add if we found a title
                 if 'title' in metadata:
+                    print(f"Found: {metadata['title']}")
                     # Calculate relative path for the browser
                     # We want: /content/posts/category/filename.md
                     rel_path = os.path.relpath(file_path, os.path.join(script_dir, '..'))

@@ -5,5 +5,12 @@
         "category": "backend",
         "excerpt": "",
         "path": "/content/posts/backend/hello-world.md"
+    },
+    {
+        "title": "TESTING",
+        "date": "2023-10-23",
+        "category": "tech",
+        "excerpt": "",
+        "path": "/content/posts/tech/Test.md"
     }
 ]
