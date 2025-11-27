@@ -41,8 +41,49 @@
             transition: background-color 0.3s, color 0.3s;
         }
         
+        /* Top Navigation Bar */
+        .top-nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .top-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-nav .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            text-decoration: none;
+        }
+        .top-nav nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+        .top-nav nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .top-nav nav a:hover {
+            color: var(--primary-color);
+        }
+        
         .container {
-            max-width: 900px; 
+            max-width: 1200px; 
             margin: 0 auto; 
             padding: 3rem 2rem; 
         }
@@ -59,40 +100,122 @@
             margin-bottom: 3rem;
         }
         
-        /* Navigation Cards */
-        nav ul { 
-            list-style: none; 
-            padding: 0; 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+        /* Project Cards */
+        .projects-section {
             margin-bottom: 4rem;
         }
-        nav a { 
-            display: block;
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-decoration: none; 
-            color: var(--heading-color); 
-            font-weight: 600;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.2s, box-shadow 0.2s;
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--heading-color);
+            margin-bottom: 2rem;
             text-align: center;
-            border: 1px solid var(--border-color);
         }
-        nav a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .project-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin: 0 0 0.5rem 0;
+        }
+        .project-description {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .tech-stack {
+            padding: 0 1.5rem 1.5rem;
+        }
+        .tech-stack h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin: 1rem 0 0.75rem 0;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+        .tech-stack ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tech-stack li {
+            padding: 0.4rem 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+        .tech-stack li::before {
+            content: "▸ ";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.02);
+        }
+        @media (prefers-color-scheme: dark) {
+            .project-links {
+                background: rgba(255, 255, 255, 0.03);
+            }
+        }
+        .project-links a {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .github-link {
+            background: var(--card-bg);
+            color: var(--heading-color);
+            border: 2px solid var(--border-color);
+        }
+        .github-link:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
         }
+        .demo-link {
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+        .demo-link:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
 
         /* Social Section Styles */
-        .socials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
+        .socials-section {
+            max-width: 600px;
+            margin: 0 auto;
         }
         .social-category {
             background: var(--card-bg);
@@ -163,21 +286,100 @@
             color: white;
         }
         .kofi-btn i { color: white !important; }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="container">
+            <a href="/" class="logo">v01dworks</a>
+            <nav>
+                <ul>
+                    <li><a href="../blogs/index.html?category=backend">Backend Blog</a></li>
+                    <li><a href="../blogs/index.html?category=tech">Tech Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <div class="container">
     <h1>Welcome to v01dworks</h1>
-    <p class="subtitle">My personal portfolio and hub.</p>
+    <p class="subtitle">Full-stack developer building modern web applications and tools for creatives.</p>
     
-    <nav>
-        <ul>
-            <li><a href="../blogs/index.html?category=backend">Backend Blog</a></li>
-            <li><a href="../blogs/index.html?category=tech">Tech Blog</a></li>
-        </ul>
-    </nav>
+    <!-- Featured Projects Section -->
+    <section class="projects-section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Game Dev Asset Manager -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Game Dev Asset Manager</h3>
+                    <p class="project-description">
+                        A centralized, web-based management system for game developers to organize, store, and retrieve assets (textures, 3D models, audio files, and scripts). Containerized with Docker and featuring a demo instance hosted on my VPS.
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><strong>Backend:</strong> FastAPI (Python 3.11) with async REST API</li>
+                        <li><strong>Database:</strong> PostgreSQL with SQLAlchemy ORM</li>
+                        <li><strong>Frontend:</strong> Vanilla JavaScript, HTML5, CSS3</li>
+                        <li><strong>Deployment:</strong> Dockerized with Docker Compose</li>
+                        <li><strong>Auth:</strong> JWT tokens with secure password hashing</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DustinOlsen/GameDevAssetCatalogue" class="github-link" target="_blank">
+                        <i class="fa-brands fa-github"></i> View Code
+                    </a>
+                    <a href="https://demo.v01dworks.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                </div>
+            </div>
 
-    <section class="socials-centered" style="max-width: 500px; margin: 0 auto;">
+            <!-- Cutting Board -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Cutting Board</h3>
+                    <p class="project-description">
+                        A kitchen companion web app for saving recipes, tracking ingredients on hand, and generating shopping lists from recipes. Features server-side rendering with native light/dark mode support.
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><strong>Backend:</strong> Python 3.11+, FastAPI, Uvicorn</li>
+                        <li><strong>Database:</strong> PostgreSQL with SQLAlchemy ORM</li>
+                        <li><strong>Frontend:</strong> Jinja2 templates + Vanilla JavaScript (ES6+)</li>
+                        <li><strong>Styling:</strong> Custom CSS3 with CSS Variables (Light/Dark mode)</li>
+                        <li><strong>Auth:</strong> OAuth2 with JWT stateless sessions</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DustinOlsen/CuttingBoardWeb" class="github-link" target="_blank">
+                        <i class="fa-brands fa-github"></i> View Code
+                    </a>
+                    <a href="https://cuttingboard.v01dworks.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section class="socials-section">
         <div class="social-category">
             <h3>Connect</h3>
             <ul class="social-links">
