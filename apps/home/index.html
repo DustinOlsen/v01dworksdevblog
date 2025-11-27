@@ -214,12 +214,12 @@
 
         /* Social Section Styles */
         .socials-section {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         .social-category {
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--card-shadow);
             border: 1px solid var(--border-color);
@@ -231,61 +231,55 @@
             color: var(--accent-color);
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 0.75rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             font-weight: 800;
         }
-        .social-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        /* Social Buttons Grid */
+        .social-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
         }
-        .social-links li {
-            margin-bottom: 0.75rem;
-        }
-        .social-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 500;
-        }
-        .social-links a i {
-            width: 24px;
-            text-align: center;
-            font-size: 1.2rem;
-            color: #94a3b8;
-            transition: color 0.2s;
-        }
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        .social-links a:hover i {
-            color: var(--primary-color);
-        }
-        
-        .kofi-btn {
+
+        .social-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            background: #FF5E5B;
+            gap: 0.75rem;
             color: white !important;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 8px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-            box-sizing: border-box;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
         }
-        .kofi-btn:hover {
+        
+        .social-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 94, 91, 0.3);
-            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0.95;
         }
-        .kofi-btn i { color: white !important; }
+        
+        .social-btn i { font-size: 1.1rem; }
+
+        /* Brand Colors */
+        .btn-email { background-color: var(--heading-color); } /* Dark/Slate */
+        .btn-linkedin { background-color: #0077b5; }
+        .btn-github { background-color: #24292e; }
+        .btn-threads { background-color: #000000; }
+        .btn-bluesky { background-color: #0560ff; }
+        .btn-mastodon { background-color: #6364ff; }
+        .btn-kofi { background-color: #FF5E5B; }
+
+        @media (prefers-color-scheme: dark) {
+            .btn-github { background-color: #333; }
+            .btn-threads { background-color: #333; }
+            .btn-email { background-color: #475569; }
+        }
 
         @media (max-width: 768px) {
             .projects-grid {
@@ -294,6 +288,9 @@
             .top-nav .container {
                 flex-direction: column;
                 gap: 1rem;
+            }
+            .social-buttons-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
