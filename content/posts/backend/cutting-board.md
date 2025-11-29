@@ -7,7 +7,15 @@ category: "backend"
 # Project Name: CuttingBoard
 A personal recipe manager and kitchen assistant.
 
+# Background
+I started making this web app because I wanted to make something to keep track of recipes, shopping lists, and "take inventory" of what's in the fridge and pantry, all in one place. I thought it would be really useful to have this for when I'm trying to decide what to eat for dinner, and I can just see in one place what I'm able to make with what I have on hand.
+
+
 # Core Features:
+
+ 
+
+
 * Recipe Management: Create, edit, and organize recipes. Includes a dynamic form interface for adding ingredients line-by-line.
 * Smart Pantry Integration: The app automatically cross-references recipe ingredients with your pantry inventory.
 * Visual Indicators: Ingredients you have are marked with a green checkmark; missing items show a cart icon.
