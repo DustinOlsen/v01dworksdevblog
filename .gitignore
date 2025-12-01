@@ -10,6 +10,3 @@ venv/
 
 # Generated Content
 apps/blogs/posts.json
-
-# Site Content
-content/
