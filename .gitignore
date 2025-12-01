@@ -8,5 +8,4 @@ __pycache__/
 venv/
 .env
 
-# Generated Content
-apps/blogs/posts.json
+
