@@ -251,30 +251,7 @@
             // Inject social links based on category
             const socialsContainer = document.getElementById('header-socials');
             
-            if (category === 'gamedev') {
-                socialsContainer.innerHTML = `
-                    <!-- Storefronts -->
-                    <a href="#" title="Steam"><i class="fa-brands fa-steam"></i></a>
-                    <a href="#" title="itch.io"><i class="fa-brands fa-itch-io"></i></a>
-                    <a href="#" title="App Store"><i class="fa-brands fa-app-store"></i></a>
-                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
-                    
-                    <!-- Pages -->
-                    <a href="#" title="Threads"><i class="fa-brands fa-threads"></i></a>
-                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
-                    
-                    <!-- Visual Content -->
-                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <span style="border-left: 1px solid #ddd; margin: 0 0.5rem;"></span>
-
-                    <!-- Personal -->
-                    <a href="#" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
-                    <a href="#" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
-                `;
-            } else if (category === 'ios') {
+            if (category === 'ios') {
                 socialsContainer.innerHTML = `
                     <a href="#" title="App Store"><i class="fa-brands fa-app-store"></i></a>
                     <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
