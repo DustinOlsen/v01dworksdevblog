@@ -1,0 +1,15 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Generated Content
+apps/blogs/posts.json
+
+# Site Content
+content/
