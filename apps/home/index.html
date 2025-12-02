@@ -140,6 +140,16 @@
             font-weight: 700;
             color: var(--heading-color);
             margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tech-icons {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            opacity: 0.8;
         }
         .project-description {
             color: var(--text-color);
@@ -356,7 +366,14 @@
             <!-- Cutting Board -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Cutting Board</h3>
+                    <h3 class="project-title">
+                        Cutting Board
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-solid fa-database" title="PostgreSQL"></i>
+                            <i class="fa-brands fa-js" title="JavaScript"></i>
+                        </span>
+                    </h3>
                     <p class="project-description">
                         A kitchen companion web app for saving recipes, tracking ingredients on hand, and generating shopping lists from recipes. Features server-side rendering with native light/dark mode support.
                     </p>
@@ -388,7 +405,13 @@
             <!-- Volkan Productions -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Volkan Productions</h3>
+                    <h3 class="project-title">
+                        Volkan Productions
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-react" title="React/Next.js"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                        </span>
+                    </h3>
                     <p class="project-description">
                         A dynamic portfolio and content management system (CMS) built for a freelance videographer client to showcase work and manage inquiries. Features dual-language support (English/Russian), a custom admin panel for asset management, and server-side image optimization.
                     </p>
@@ -416,7 +439,14 @@
             <!-- v01dworks Photography -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">v01dworks Photography</h3>
+                    <h3 class="project-title">
+                        v01dworks Photography
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                        </span>
+                    </h3>
                     <p class="project-description">
                         A minimalist photography portfolio and blog featuring a masonry gallery layout and a robust admin dashboard. Automatically extracts and displays EXIF metadata from uploaded photos and supports system-aware light/dark theming.
                     </p>
@@ -445,7 +475,14 @@
             <!-- v01dworks API -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">v01dworks API</h3>
+                    <h3 class="project-title">
+                        v01dworks API
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                            <i class="fa-solid fa-server" title="API"></i>
+                        </span>
+                    </h3>
                     <p class="project-description">
                         A lightweight, privacy-first analytics API designed to collect essential site traffic statistics without compromising user anonymity. Prioritizes data minimization by hashing IP addresses with a secure salt and storing zero personally identifiable information (PII). Provides endpoints for tracking unique visitors and aggregating country-level demographics.
                     </p>
@@ -477,7 +514,14 @@
         <h2 class="section-title">About This Site</h2>
         <div class="project-card">
             <div class="project-header">
-                <h3 class="project-title">v01dworks.com</h3>
+                <h3 class="project-title">
+                    v01dworks.com
+                    <span class="tech-icons">
+                        <i class="fa-brands fa-html5" title="HTML5"></i>
+                        <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                        <i class="fa-brands fa-python" title="Python"></i>
+                    </span>
+                </h3>
                 <p class="project-description">
                     You're looking at it! This portfolio is a custom-built static site designed for performance and simplicity. Instead of using a heavy CMS, I built a custom Python static site generator that compiles Markdown content into a lightweight, fast-loading blog.
                 </p>
