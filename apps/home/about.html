@@ -194,12 +194,19 @@
                     const link = e.target.closest('a');
                     if (!link) return;
                     
-                    const href = link.getAttribute('href');
-                    if (!href) return;
+                    // Use the full resolved URL (link.href) instead of getAttribute
+                    // This ensures we have a valid URL to parse
+                    if (!link.href) return;
                     
-                    // Check if external or mailto
-                    if ((href.startsWith('http') && !href.includes(window.location.hostname)) || href.startsWith('mailto:')) {
-                        trackClick(href);
+                    try {
+                        const url = new URL(link.href);
+                        
+                        // Track if it's a mailto link OR if the hostname doesn't match the current site
+                        if (url.protocol === 'mailto:' || url.hostname !== window.location.hostname) {
+                            trackClick(link.href);
+                        }
+                    } catch (err) {
+                        // Ignore invalid URLs
                     }
                 });
             }
