@@ -236,7 +236,7 @@
             return new Intl.NumberFormat().format(num);
         }
 
-        function createDataList(dataObj, iconClass = 'fa-solid fa-chart-simple') {
+        function createDataList(dataObj, iconArg = 'fa-solid fa-chart-simple') {
             if (!dataObj || Object.keys(dataObj).length === 0) {
                 return '<div style="padding:1rem; text-align:center; opacity:0.6;">No data available</div>';
             }
@@ -248,15 +248,23 @@
 
             return `
                 <ul class="data-list">
-                    ${sorted.map(([label, count]) => `
+                    ${sorted.map(([label, count]) => {
+                        let iconHtml;
+                        if (typeof iconArg === 'function') {
+                            iconHtml = iconArg(label);
+                        } else {
+                            iconHtml = `<i class="${iconArg}" style="width: 20px; opacity: 0.7;"></i>`;
+                        }
+                        
+                        return `
                         <li class="data-item">
                             <span class="data-label">
-                                <i class="${iconClass}" style="width: 20px; opacity: 0.7;"></i>
+                                ${iconHtml}
                                 ${label}
                             </span>
                             <span class="data-count">${formatNumber(count)}</span>
                         </li>
-                    `).join('')}
+                    `}).join('')}
                 </ul>
             `;
         }
@@ -290,7 +298,10 @@
                         </div>
                         <div class="data-card">
                             <h2><i class="fa-solid fa-earth-americas" style="margin-right:0.5rem; color:var(--primary-color)"></i> Top Countries</h2>
-                            ${createDataList(data.countries, 'fa-solid fa-flag')}
+                            ${createDataList(data.countries, (code) => {
+                                if (!code || code === 'Unknown') return '<i class="fa-solid fa-flag" style="width: 20px; opacity: 0.7;"></i>';
+                                return `<img src="https://flagcdn.com/20x15/${code.toLowerCase()}.png" width="20" height="15" alt="${code}" style="margin-right: 5px; border-radius: 2px; vertical-align: middle;">`;
+                            })}
                         </div>
                     </div>
 
