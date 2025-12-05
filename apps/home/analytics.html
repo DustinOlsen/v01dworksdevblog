@@ -496,6 +496,7 @@
                 fetch(CLICK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    keepalive: true,
                     body: JSON.stringify({
                         url: url,
                         site_id: SITE_ID
