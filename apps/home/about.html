@@ -156,5 +156,29 @@
                 document.getElementById('content').innerHTML = `<p>Error loading content: ${err.message}</p>`;
             });
     </script>
+    <!-- v01dworks Tracker -->
+    <script>
+        (function() {
+            const API_URL = 'https://api.v01dworks.com/track';
+            
+            function trackVisit() {
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        path: window.location.pathname + window.location.search
+                    })
+                }).catch(err => console.debug('Tracker error:', err));
+            }
+
+            if (document.readyState === 'complete') {
+                trackVisit();
+            } else {
+                window.addEventListener('load', trackVisit);
+            }
+        })();
+    </script>
 </body>
 </html>
