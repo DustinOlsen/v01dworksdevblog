@@ -6,6 +6,7 @@
     <title>Analytics - v01dworks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --bg-color: #f0f9ff;
@@ -273,6 +274,79 @@
             `;
         }
 
+        function renderHistoryChart(history) {
+            const ctx = document.getElementById('historyChart').getContext('2d');
+            
+            // Sort history by date ascending
+            const sortedHistory = history.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            const labels = sortedHistory.map(item => {
+                const date = new Date(item.date + 'T00:00:00'); // Fix timezone issue
+                return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+            });
+            const visitsData = sortedHistory.map(item => item.total_visits);
+            const uniqueData = sortedHistory.map(item => item.unique_visitors);
+
+            const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+            const textColor = isDark ? '#cbd5e1' : '#334155';
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Total Visits',
+                            data: visitsData,
+                            borderColor: '#0ea5e9', // primary-color
+                            backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Unique Visitors',
+                            data: uniqueData,
+                            borderColor: '#10b981', // emerald-500
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: textColor }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: gridColor },
+                            ticks: { color: textColor, precision: 0 }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: textColor }
+                        }
+                    }
+                }
+            });
+        }
+
         fetch(API_URL)
             .then(response => {
                 if (!response.ok) throw new Error('Failed to fetch stats');
@@ -291,6 +365,14 @@
                         <div class="stat-card">
                             <h3>Unique Visitors</h3>
                             <div class="stat-value">${formatNumber(data.unique_visitors || 0)}</div>
+                        </div>
+                    </div>
+
+                    <!-- History Chart -->
+                    <div class="data-card" style="margin-bottom: 2rem;">
+                        <h2><i class="fa-solid fa-chart-area" style="margin-right:0.5rem; color:var(--primary-color)"></i> Traffic History (Last 30 Days)</h2>
+                        <div style="height: 300px; width: 100%;">
+                            <canvas id="historyChart"></canvas>
                         </div>
                     </div>
 
@@ -354,6 +436,10 @@
                         </div>
                     </div>
                 `;
+
+                if (data.history && data.history.length > 0) {
+                    renderHistoryChart(data.history);
+                }
             })
             .catch(err => {
                 document.getElementById('dashboard').innerHTML = `
