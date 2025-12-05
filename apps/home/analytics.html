@@ -277,15 +277,25 @@
         function renderHistoryChart(history) {
             const ctx = document.getElementById('historyChart').getContext('2d');
             
-            // Sort history by date ascending
-            const sortedHistory = history.sort((a, b) => new Date(a.date) - new Date(b.date));
+            // Generate last 14 days
+            const days = 14;
+            const labels = [];
+            const visitsData = [];
+            const uniqueData = [];
             
-            const labels = sortedHistory.map(item => {
-                const date = new Date(item.date + 'T00:00:00'); // Fix timezone issue
-                return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-            });
-            const visitsData = sortedHistory.map(item => item.total_visits);
-            const uniqueData = sortedHistory.map(item => item.unique_visitors);
+            const historyMap = new Map(history.map(item => [item.date, item]));
+            
+            for (let i = days - 1; i >= 0; i--) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                const dateStr = d.toISOString().split('T')[0];
+                
+                labels.push(d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }));
+                
+                const data = historyMap.get(dateStr) || { total_visits: 0, unique_visitors: 0 };
+                visitsData.push(data.total_visits);
+                uniqueData.push(data.unique_visitors);
+            }
 
             const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
