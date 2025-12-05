@@ -159,25 +159,54 @@
     <!-- v01dworks Tracker -->
     <script>
         (function() {
-            const API_URL = 'https://analytics.v01dworks.com/track';
+            const TRACK_URL = 'https://analytics.v01dworks.com/track';
+            const CLICK_URL = 'https://analytics.v01dworks.com/click';
+            const SITE_ID = 'v01dworks.com';
             
             function trackVisit() {
-                fetch(API_URL, {
+                fetch(TRACK_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         path: window.location.pathname + window.location.search,
-                        site_id: 'v01dworks.com'
+                        site_id: SITE_ID
                     })
                 }).catch(err => console.debug('Tracker error:', err));
             }
 
-            if (document.readyState === 'complete') {
+            function trackClick(url) {
+                fetch(CLICK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        url: url,
+                        site_id: SITE_ID
+                    })
+                }).catch(err => console.debug('Click tracker error:', err));
+            }
+
+            function init() {
                 trackVisit();
+                
+                // Add click listeners to all external links
+                document.addEventListener('click', function(e) {
+                    const link = e.target.closest('a');
+                    if (!link) return;
+                    
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+                    
+                    // Check if external or mailto
+                    if ((href.startsWith('http') && !href.includes(window.location.hostname)) || href.startsWith('mailto:')) {
+                        trackClick(href);
+                    }
+                });
+            }
+
+            if (document.readyState === 'complete') {
+                init();
             } else {
-                window.addEventListener('load', trackVisit);
+                window.addEventListener('load', init);
             }
         })();
     </script>

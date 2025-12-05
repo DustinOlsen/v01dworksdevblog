@@ -443,6 +443,20 @@
                             ${createDataList(data.referrers, 'fa-solid fa-link')}
                         </div>
                     </div>
+
+                    <div class="data-section">
+                        <div class="data-card" style="grid-column: 1 / -1;">
+                            <h2><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right:0.5rem; color:var(--primary-color)"></i> Top Outbound Links</h2>
+                            ${createDataList(data.links, (url) => {
+                                // Truncate long URLs
+                                const displayUrl = url.length > 60 ? url.substring(0, 60) + '...' : url;
+                                return `<a href="${url}" target="_blank" style="color:var(--text-color); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+                                    <i class="fa-solid fa-link" style="width: 20px; opacity: 0.7;"></i>
+                                    ${displayUrl}
+                                </a>`;
+                            })}
+                        </div>
+                    </div>
                 `;
 
                 if (data.history && data.history.length > 0) {
@@ -463,25 +477,54 @@
     <!-- v01dworks Tracker (Track this page too!) -->
     <script>
         (function() {
-            const API_URL = 'https://analytics.v01dworks.com/track';
+            const TRACK_URL = 'https://analytics.v01dworks.com/track';
+            const CLICK_URL = 'https://analytics.v01dworks.com/click';
+            const SITE_ID = 'v01dworks.com';
             
             function trackVisit() {
-                fetch(API_URL, {
+                fetch(TRACK_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         path: window.location.pathname + window.location.search,
-                        site_id: 'v01dworks.com'
+                        site_id: SITE_ID
                     })
                 }).catch(err => console.debug('Tracker error:', err));
             }
 
-            if (document.readyState === 'complete') {
+            function trackClick(url) {
+                fetch(CLICK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        url: url,
+                        site_id: SITE_ID
+                    })
+                }).catch(err => console.debug('Click tracker error:', err));
+            }
+
+            function init() {
                 trackVisit();
+                
+                // Add click listeners to all external links
+                document.addEventListener('click', function(e) {
+                    const link = e.target.closest('a');
+                    if (!link) return;
+                    
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+                    
+                    // Check if external or mailto
+                    if ((href.startsWith('http') && !href.includes(window.location.hostname)) || href.startsWith('mailto:')) {
+                        trackClick(href);
+                    }
+                });
+            }
+
+            if (document.readyState === 'complete') {
+                init();
             } else {
-                window.addEventListener('load', trackVisit);
+                window.addEventListener('load', init);
             }
         })();
     </script>
