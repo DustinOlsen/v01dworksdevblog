@@ -450,8 +450,23 @@
                             ${createDataList(data.links, (url) => {
                                 // Truncate long URLs
                                 const displayUrl = url.length > 60 ? url.substring(0, 60) + '...' : url;
+                                
+                                // Handle mailto links specifically
+                                if (url.startsWith('mailto:')) {
+                                     return `<a href="${url}" style="color:var(--text-color); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+                                        <i class="fa-solid fa-envelope" style="width: 20px; opacity: 0.7;"></i>
+                                        ${displayUrl}
+                                    </a>`;
+                                }
+
+                                let domain = '';
+                                try {
+                                    domain = new URL(url).hostname;
+                                } catch (e) {}
+
                                 return `<a href="${url}" target="_blank" style="color:var(--text-color); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
-                                    <i class="fa-solid fa-link" style="width: 20px; opacity: 0.7;"></i>
+                                    <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" alt="" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: middle; border-radius: 2px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                                    <i class="fa-solid fa-link" style="display:none; width: 20px; opacity: 0.7;"></i>
                                     ${displayUrl}
                                 </a>`;
                             })}
