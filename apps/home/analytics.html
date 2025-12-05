@@ -308,18 +308,41 @@
                     <div class="data-section">
                         <div class="data-card">
                             <h2><i class="fa-solid fa-laptop" style="margin-right:0.5rem; color:var(--primary-color)"></i> Devices</h2>
-                            ${createDataList(data.devices, 'fa-solid fa-mobile-screen')}
+                            ${createDataList(data.devices, (device) => {
+                                let icon = 'fa-solid fa-laptop';
+                                if (device === 'Mobile') icon = 'fa-solid fa-mobile-screen';
+                                else if (device === 'Tablet') icon = 'fa-solid fa-tablet-screen-button';
+                                else if (device === 'Desktop') icon = 'fa-solid fa-desktop';
+                                return `<i class="${icon}" style="width: 20px; opacity: 0.7;"></i>`;
+                            })}
                         </div>
                         <div class="data-card">
                             <h2><i class="fa-brands fa-chrome" style="margin-right:0.5rem; color:var(--primary-color)"></i> Browsers</h2>
-                            ${createDataList(data.browsers, 'fa-solid fa-globe')}
+                            ${createDataList(data.browsers, (browser) => {
+                                let icon = 'fa-solid fa-globe';
+                                const b = browser.toLowerCase();
+                                if (b.includes('chrome')) icon = 'fa-brands fa-chrome';
+                                else if (b.includes('safari')) icon = 'fa-brands fa-safari';
+                                else if (b.includes('firefox')) icon = 'fa-brands fa-firefox';
+                                else if (b.includes('edge')) icon = 'fa-brands fa-edge';
+                                else if (b.includes('opera')) icon = 'fa-brands fa-opera';
+                                return `<i class="${icon}" style="width: 20px; opacity: 0.7;"></i>`;
+                            })}
                         </div>
                     </div>
 
                     <div class="data-section">
                         <div class="data-card">
                             <h2><i class="fa-brands fa-linux" style="margin-right:0.5rem; color:var(--primary-color)"></i> Operating Systems</h2>
-                            ${createDataList(data.os, 'fa-solid fa-microchip')}
+                            ${createDataList(data.os, (os) => {
+                                let icon = 'fa-solid fa-microchip';
+                                const o = os.toLowerCase();
+                                if (o.includes('windows')) icon = 'fa-brands fa-windows';
+                                else if (o.includes('mac') || o.includes('ios')) icon = 'fa-brands fa-apple';
+                                else if (o.includes('android')) icon = 'fa-brands fa-android';
+                                else if (o.includes('linux') || o.includes('ubuntu')) icon = 'fa-brands fa-linux';
+                                return `<i class="${icon}" style="width: 20px; opacity: 0.7;"></i>`;
+                            })}
                         </div>
                         <div class="data-card">
                             <h2><i class="fa-solid fa-arrow-right-to-bracket" style="margin-right:0.5rem; color:var(--primary-color)"></i> Referrers</h2>
