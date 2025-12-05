@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - v01dworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f9ff;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --primary-color: #0ea5e9;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --accent-color: #0284c7;
+            --border-color: #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --text-color: #cbd5e1;
+                --heading-color: #f8fafc;
+                --primary-color: #38bdf8;
+                --card-bg: #1e293b;
+                --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+                --accent-color: #7dd3fc;
+                --border-color: #334155;
+            }
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Top Navigation Bar */
+        .top-nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .top-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-nav .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            text-decoration: none;
+        }
+        .top-nav nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+        .top-nav nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .top-nav nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 3rem 2rem; 
+        }
+
+        h1 { 
+            color: var(--heading-color); 
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* Analytics Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .data-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .data-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .data-card h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--heading-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            color: var(--heading-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .data-count {
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(0,0,0,0.05);
+            padding: 0.1rem 0.6rem;
+            border-radius: 99px;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .data-count {
+                background: rgba(255,255,255,0.1);
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="container">
+            <a href="/" class="logo">v01dworks</a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="/blogs/index.html?category=backend">Backend Blog</a></li>
+                    <li><a href="/blogs/index.html?category=tech">Tech Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Site Analytics</h1>
+        
+        <div id="dashboard">
+            <div class="loading">Loading analytics data...</div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://analytics.v01dworks.com/stats?site_id=v01dworks.com';
+
+        function formatNumber(num) {
+            return new Intl.NumberFormat().format(num);
+        }
+
+        function createDataList(dataObj, iconClass = 'fa-solid fa-chart-simple') {
+            if (!dataObj || Object.keys(dataObj).length === 0) {
+                return '<div style="padding:1rem; text-align:center; opacity:0.6;">No data available</div>';
+            }
+            
+            // Sort by count descending
+            const sorted = Object.entries(dataObj)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 10); // Top 10
+
+            return `
+                <ul class="data-list">
+                    ${sorted.map(([label, count]) => `
+                        <li class="data-item">
+                            <span class="data-label">
+                                <i class="${iconClass}" style="width: 20px; opacity: 0.7;"></i>
+                                ${label}
+                            </span>
+                            <span class="data-count">${formatNumber(count)}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+
+        fetch(API_URL)
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to fetch stats');
+                return response.json();
+            })
+            .then(data => {
+                const dashboard = document.getElementById('dashboard');
+                
+                dashboard.innerHTML = `
+                    <!-- Summary Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Visits</h3>
+                            <div class="stat-value">${formatNumber(data.total_visits || 0)}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Unique Visitors</h3>
+                            <div class="stat-value">${formatNumber(data.unique_visitors || 0)}</div>
+                        </div>
+                    </div>
+
+                    <!-- Main Data Grid -->
+                    <div class="data-section">
+                        <div class="data-card">
+                            <h2><i class="fa-solid fa-file-lines" style="margin-right:0.5rem; color:var(--primary-color)"></i> Top Pages</h2>
+                            ${createDataList(data.pages, 'fa-regular fa-file')}
+                        </div>
+                        <div class="data-card">
+                            <h2><i class="fa-solid fa-earth-americas" style="margin-right:0.5rem; color:var(--primary-color)"></i> Top Countries</h2>
+                            ${createDataList(data.countries, 'fa-solid fa-flag')}
+                        </div>
+                    </div>
+
+                    <div class="data-section">
+                        <div class="data-card">
+                            <h2><i class="fa-solid fa-laptop" style="margin-right:0.5rem; color:var(--primary-color)"></i> Devices</h2>
+                            ${createDataList(data.devices, 'fa-solid fa-mobile-screen')}
+                        </div>
+                        <div class="data-card">
+                            <h2><i class="fa-brands fa-chrome" style="margin-right:0.5rem; color:var(--primary-color)"></i> Browsers</h2>
+                            ${createDataList(data.browsers, 'fa-solid fa-globe')}
+                        </div>
+                    </div>
+
+                    <div class="data-section">
+                        <div class="data-card">
+                            <h2><i class="fa-brands fa-linux" style="margin-right:0.5rem; color:var(--primary-color)"></i> Operating Systems</h2>
+                            ${createDataList(data.os, 'fa-solid fa-microchip')}
+                        </div>
+                        <div class="data-card">
+                            <h2><i class="fa-solid fa-arrow-right-to-bracket" style="margin-right:0.5rem; color:var(--primary-color)"></i> Referrers</h2>
+                            ${createDataList(data.referrers, 'fa-solid fa-link')}
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('dashboard').innerHTML = `
+                    <div class="error-msg">
+                        <h3>Error Loading Analytics</h3>
+                        <p>Could not connect to the analytics server. Please try again later.</p>
+                        <p style="font-size:0.8rem; opacity:0.8;">${err.message}</p>
+                    </div>
+                `;
+            });
+    </script>
+    
+    <!-- v01dworks Tracker (Track this page too!) -->
+    <script>
+        (function() {
+            const API_URL = 'https://analytics.v01dworks.com/track';
+            
+            function trackVisit() {
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        path: window.location.pathname + window.location.search,
+                        site_id: 'v01dworks.com'
+                    })
+                }).catch(err => console.debug('Tracker error:', err));
+            }
+
+            if (document.readyState === 'complete') {
+                trackVisit();
+            } else {
+                window.addEventListener('load', trackVisit);
+            }
+        })();
+    </script>
+</body>
+</html>
