@@ -117,6 +117,57 @@
             gap: 2rem;
             margin-bottom: 3rem;
         }
+
+        /* Flagship Projects */
+        .flagship-section {
+            margin-bottom: 4rem;
+        }
+        .flagship-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .flagship-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .flagship-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+        .flagship-card .project-header {
+            padding: 2.5rem;
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.05), transparent);
+        }
+        .flagship-card .project-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .flagship-card .project-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+        .flagship-card .tech-stack {
+            padding: 0 2.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .flagship-card .tech-stack ul {
+            margin-top: 0.5rem;
+        }
+        .flagship-card .project-links {
+            padding: 1.5rem 2.5rem;
+        }
+
         .project-card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -327,9 +378,88 @@
     <h1>Welcome to v01dworks</h1>
     <p class="subtitle">My name is Dustin Olsen and I'm a full-stack developer building modern web applications and tools for creatives.</p>
     
-    <!-- Featured Projects Section -->
+    <!-- Flagship Projects Section -->
+    <section class="flagship-section">
+        <h2 class="section-title">Flagship Projects</h2>
+        <div class="flagship-grid">
+            <!-- v01dworksAnalyticsAPI -->
+            <div class="flagship-card">
+                <div class="project-header">
+                    <h3 class="project-title">
+                        v01dworksAnalyticsAPI
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                            <i class="fa-solid fa-server" title="API"></i>
+                        </span>
+                    </h3>
+                    <p class="project-description">
+                        A robust, privacy-first analytics platform capable of tracking multiple websites simultaneously. Features isolated databases for each site to ensure data separation, detailed User-Agent parsing for OS/Browser insights, and unique visitor tracking. Built with FastAPI, it prioritizes data minimization by hashing IP addresses and storing zero PII, while offering a comprehensive API for retrieving aggregated statistics.
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><strong>Framework:</strong> FastAPI (Python 3.11)</li>
+                        <li><strong>Database:</strong> SQLite</li>
+                        <li><strong>Geolocation:</strong> MaxMind GeoLite2</li>
+                        <li><strong>Infrastructure:</strong> Docker & Docker Compose</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DustinOlsen/v01dworksAPI" class="github-link" target="_blank">
+                        <i class="fa-brands fa-github"></i> View Code
+                    </a>
+                </div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
+                    <i class="fa-solid fa-chart-line" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
+                    <strong>Live Demo:</strong> <a href="analytics.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">View Analytics Dashboard</a>
+                </div>
+            </div>
+
+            <!-- (WIP) SaaS Creator Site -->
+            <div class="flagship-card">
+                <div class="project-header">
+                    <h3 class="project-title">
+                        (WIP) SaaS Creator Site
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-react" title="React"></i>
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-brands fa-bluesky" title="AT Protocol"></i>
+                            <i class="fa-brands fa-aws" title="AWS"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                        </span>
+                    </h3>
+                    <p class="project-description">
+                        A personal content hub designed for creators to maintain ownership of their data while staying connected to the decentralized web. Features a unified feed combining local posts with Bluesky activity, a dedicated photo gallery, and a comprehensive social links manager. Includes system-native dark mode support and seamless cross-platform integration.
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><strong>Framework:</strong> React (Vite), FastAPI (Python)</li>
+                        <li><strong>Database:</strong> SQLite with SQLAlchemy (Async)</li>
+                        <li><strong>Styling:</strong> Tailwind CSS (System-native Dark/Light mode)</li>
+                        <li><strong>Integrations:</strong> AT Protocol (Bluesky) for auth & feed aggregation</li>
+                        <li><strong>Infrastructure:</strong> Dockerized with Nginx reverse proxy, AWS for media storage & processing</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
+                        <i class="fa-solid fa-rocket"></i> Launching Soon
+                    </span>
+                </div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
+                    <i class="fa-solid fa-hammer" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
+                    <strong>Status:</strong> In Development
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
     <section class="projects-section">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
             <!-- Game Dev Asset Manager -->
             <div class="project-card">
@@ -515,78 +645,6 @@
                 </div>
             </div>
 
-            <!-- v01dworksAnalyticsAPI -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">
-                        v01dworksAnalyticsAPI
-                        <span class="tech-icons">
-                            <i class="fa-brands fa-python" title="Python"></i>
-                            <i class="fa-brands fa-docker" title="Docker"></i>
-                            <i class="fa-solid fa-server" title="API"></i>
-                        </span>
-                    </h3>
-                    <p class="project-description">
-                        A robust, privacy-first analytics platform capable of tracking multiple websites simultaneously. Features isolated databases for each site to ensure data separation, detailed User-Agent parsing for OS/Browser insights, and unique visitor tracking. Built with FastAPI, it prioritizes data minimization by hashing IP addresses and storing zero PII, while offering a comprehensive API for retrieving aggregated statistics.
-                    </p>
-                </div>
-                <div class="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li><strong>Framework:</strong> FastAPI (Python 3.11)</li>
-                        <li><strong>Database:</strong> SQLite</li>
-                        <li><strong>Geolocation:</strong> MaxMind GeoLite2</li>
-                        <li><strong>Infrastructure:</strong> Docker & Docker Compose</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/DustinOlsen/v01dworksAPI" class="github-link" target="_blank">
-                        <i class="fa-brands fa-github"></i> View Code
-                    </a>
-                </div>
-                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-chart-line" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Live Demo:</strong> <a href="analytics.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">View Analytics Dashboard</a>
-                </div>
-            </div>
-
-            <!-- (WIP) SaaS Creator Site -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">
-                        (WIP) SaaS Creator Site
-                        <span class="tech-icons">
-                            <i class="fa-brands fa-react" title="React"></i>
-                            <i class="fa-brands fa-python" title="Python"></i>
-                            <i class="fa-brands fa-bluesky" title="AT Protocol"></i>
-                            <i class="fa-brands fa-aws" title="AWS"></i>
-                            <i class="fa-brands fa-docker" title="Docker"></i>
-                        </span>
-                    </h3>
-                    <p class="project-description">
-                        A personal content hub designed for creators to maintain ownership of their data while staying connected to the decentralized web. Features a unified feed combining local posts with Bluesky activity, a dedicated photo gallery, and a comprehensive social links manager. Includes system-native dark mode support and seamless cross-platform integration.
-                    </p>
-                </div>
-                <div class="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li><strong>Framework:</strong> React (Vite), FastAPI (Python)</li>
-                        <li><strong>Database:</strong> SQLite with SQLAlchemy (Async)</li>
-                        <li><strong>Styling:</strong> Tailwind CSS (System-native Dark/Light mode)</li>
-                        <li><strong>Integrations:</strong> AT Protocol (Bluesky) for auth & feed aggregation</li>
-                        <li><strong>Infrastructure:</strong> Dockerized with Nginx reverse proxy, AWS for media storage & processing</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-rocket"></i> Launching Soon
-                    </span>
-                </div>
-                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-hammer" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Status:</strong> In Development
-                </div>
-            </div>
         </div>
     </section>
 
