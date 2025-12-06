@@ -232,12 +232,9 @@
             padding: 0.4rem 0;
             color: var(--text-color);
             font-size: 0.95rem;
-        }
-        .tech-stack li::before {
-            content: "▸ ";
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .project-links {
             display: flex;
@@ -695,10 +692,10 @@
             <div class="tech-stack">
                 <h4>Tech Stack</h4>
                 <ul>
-                    <li><strong>Frontend:</strong> Vanilla HTML5, CSS3, JavaScript (No frameworks)</li>
-                    <li><strong>Build System:</strong> Custom Python Script (Static Site Generator)</li>
-                    <li><strong>Content:</strong> Markdown with Frontmatter</li>
-                    <li><strong>Infrastructure:</strong> Nginx on VPS (Debian)</li>
+                    <li><i class="fa-brands fa-html5" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Vanilla HTML5, CSS3, JavaScript (No frameworks)</li>
+                    <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Build System:</strong> Custom Python Script (Static Site Generator)</li>
+                    <li><i class="fa-brands fa-markdown" style="width: 20px; color: var(--primary-color);"></i> <strong>Content:</strong> Markdown with Frontmatter</li>
+                    <li><i class="fa-solid fa-server" style="width: 20px; color: var(--primary-color);"></i> <strong>Infrastructure:</strong> Nginx on VPS (Debian)</li>
                 </ul>
             </div>
             <div class="project-links">
