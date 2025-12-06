@@ -395,13 +395,26 @@
                     </h3>
                     <p class="project-description">
                         <strong>Actionable Intelligence, Zero Surveillance.</strong><br>
-                        A lightweight, self-hosted analytics engine that bridges the gap between simple counters and invasive tracking tools. It proves you don't need to compromise privacy for powerful insights.
+                        v01dworks Analytics is a lightweight, self-hosted analytics engine designed to bridge the gap between simple privacy-counters and invasive enterprise tracking tools. It proves that you don't need to compromise user privacy to gain powerful, actionable business insights.
                         <br><br>
-                        Beyond standard metrics, it leverages <strong>Machine Learning</strong> (Scikit-learn & Pandas) to provide:
+                        <strong>Core Philosophy:</strong>
+                        <ul style="margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.2rem; color: var(--text-color); opacity: 0.9;">
+                            <li><strong>Respect:</strong> Users are guests, not data points. No PII is stored; IPs are salted and hashed immediately.</li>
+                            <li><strong>Ownership:</strong> 100% self-hosted. Your data never leaves your server.</li>
+                            <li><strong>Intelligence:</strong> Moving beyond "what happened" to "what is happening" using lightweight Machine Learning.</li>
+                        </ul>
+
+                        <strong>Key Strengths:</strong>
                         <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem; color: var(--text-color); opacity: 0.9;">
-                            <li><strong>Forecasting:</strong> Linear Regression models to predict future traffic trends.</li>
-                            <li><strong>Anomaly Detection:</strong> Isolation Forests to flag unusual spikes or dips.</li>
-                            <li><strong>Bot Defense:</strong> Heuristic analysis to separate humans from scrapers.</li>
+                            <li><strong>Privacy-First Architecture:</strong> Unlike Google Analytics, this API does not track users across the web. It uses local GeoLite2 databases for geography and stores visitor uniqueness via irreversible salted hashes.</li>
+                            <li><strong>Multi-Tenant & Scalable:</strong> Built to run a single instance for an entire portfolio. The API supports Multi-Site Tracking out of the box, creating isolated SQLite databases for every unique site_id.</li>
+                            <li><strong>AI-Powered Insights:</strong> Instead of heavy, black-box AI, the system uses efficient, transparent Machine Learning (Scikit-learn & Pandas) to provide context:
+                                <ul style="margin-top: 0.3rem; padding-left: 1.2rem; list-style-type: circle;">
+                                    <li><strong>Forecasting:</strong> Linear Regression models to predict future traffic trends.</li>
+                                    <li><strong>Anomaly Detection:</strong> Isolation Forests to flag unusual spikes or dips.</li>
+                                    <li><strong>Bot Defense:</strong> Heuristic analysis to separate humans from scrapers.</li>
+                                </ul>
+                            </li>
                         </ul>
                     </p>
                 </div>
