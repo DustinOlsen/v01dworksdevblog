@@ -1,0 +1,36 @@
+#extend("base"):
+    #export("title", "Privacy Policy")
+    #export("content"):
+        <h1>Privacy Policy for CuttingBoard</h1>
+        <p><strong>Last Updated: December 12, 2025</strong></p>
+
+        <h2>1. Introduction</h2>
+        <p>CuttingBoard ("I," "my," or "me") respects your privacy. This Privacy Policy explains how I handle your data when you use my iOS application.</p>
+
+        <h2>2. Data Collection and Storage</h2>
+
+        <h3>2.1 Personal Data</h3>
+        <p>I do not collect, store, or sell your personal data. I do not require you to create an account with me directly.</p>
+
+        <h3>2.2 iCloud and CloudKit</h3>
+        <p>CuttingBoard uses Apple's iCloud and CloudKit services to store your data.</p>
+        <ul>
+            <li><strong>Private Data:</strong> Your pantry items, shopping lists, and private recipes are stored locally on your device and/or in your private iCloud container. I do not have access to this data.</li>
+            <li><strong>Public Data:</strong> If you choose to publish a recipe to the "Community" section, that recipe (including title, ingredients, instructions, and any attached image) is uploaded to the CloudKit Public Database. This information is visible to other users of the app.</li>
+        </ul>
+
+        <h2>3. User Generated Content</h2>
+        <p>By submitting a recipe to the Community section, you acknowledge that:</p>
+        <ul>
+            <li>The content will be publicly available to other users.</li>
+            <li>You have the right to share the content (text and images).</li>
+            <li>I reserve the right to remove content that violates my Terms of Use or is reported as inappropriate.</li>
+        </ul>
+
+        <h2>4. Analytics</h2>
+        <p>I do not use third-party analytics services to track your behavior within the app. Apple may provide me with anonymized crash reports and usage statistics if you have opted-in to share such data with developers.</p>
+
+        <h2>5. Contact Me</h2>
+        <p>If you have any questions about this Privacy Policy, please contact me via my email: <a href="mailto:Dustin@v01dworks.com">Dustin@v01dworks.com</a></p>
+    #endexport
+#endextend
