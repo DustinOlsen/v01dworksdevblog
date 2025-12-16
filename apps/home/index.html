@@ -432,6 +432,7 @@
                     <li><a href="/blogs/index.html?category=backend">Backend Blog</a></li>
                     <li><a href="/blogs/index.html?category=tech">Tech Blog</a></li>
                     <li><button id="theme-toggle" class="theme-btn" title="Toggle Time-Based Theme"><i class="fa-solid fa-clock"></i></button></li>
+                    <li><button id="theme-cycle" class="theme-btn" title="Cycle Themes (Debug)"><i class="fa-solid fa-palette"></i></button></li>
                 </ul>
             </nav>
         </div>
@@ -1003,8 +1004,14 @@
     <script>
         (function() {
             const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeCycleBtn = document.getElementById('theme-cycle');
             const body = document.body;
             
+            const themes = [
+                'theme-pre-sunrise', 'theme-dawn', 'theme-afternoon', 
+                'theme-sunset', 'theme-dusk', 'theme-night'
+            ];
+
             // Time ranges for themes
             function getThemeForTime(hour) {
                 if (hour >= 4 && hour < 6) return 'theme-pre-sunrise';
@@ -1018,11 +1025,15 @@
             function applyTheme() {
                 const mode = localStorage.getItem('themeMode') || 'system';
                 
+                // If in debug mode, do not auto-apply themes
+                if (mode === 'debug') {
+                    themeToggleBtn.style.color = 'var(--text-color)';
+                    themeToggleBtn.title = "Enable Time-Based Theme";
+                    return;
+                }
+
                 // Remove all theme classes first
-                body.classList.remove(
-                    'theme-pre-sunrise', 'theme-dawn', 'theme-afternoon', 
-                    'theme-sunset', 'theme-dusk', 'theme-night'
-                );
+                body.classList.remove(...themes);
 
                 if (mode === 'auto') {
                     const hour = new Date().getHours();
@@ -1039,9 +1050,31 @@
             // Toggle Handler
             themeToggleBtn.addEventListener('click', () => {
                 const currentMode = localStorage.getItem('themeMode') || 'system';
-                const newMode = currentMode === 'system' ? 'auto' : 'system';
+                // If currently debug or system, go to auto. If auto, go to system.
+                const newMode = currentMode === 'auto' ? 'system' : 'auto';
                 localStorage.setItem('themeMode', newMode);
                 applyTheme();
+            });
+
+            // Cycle Handler (Debug)
+            themeCycleBtn.addEventListener('click', () => {
+                // Switch to debug mode to prevent auto-updates
+                localStorage.setItem('themeMode', 'debug');
+                themeToggleBtn.style.color = 'var(--text-color)';
+                
+                // Find current theme index
+                let currentTheme = themes.find(t => body.classList.contains(t));
+                let nextIndex = 0;
+                
+                if (currentTheme) {
+                    body.classList.remove(currentTheme);
+                    nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
+                }
+                
+                // Apply next theme
+                const nextTheme = themes[nextIndex];
+                body.classList.add(nextTheme);
+                console.log('Debug: Applied theme', nextTheme);
             });
 
             // Initial Apply
