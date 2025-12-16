@@ -443,35 +443,36 @@
     <section class="flagship-section">
         <h2 class="section-title">Flagship Projects</h2>
         <div class="flagship-grid">
-            <!-- Cutting Board for iOS -->
+            <!-- Cutting Board - Kitchen HQ -->
             <div class="flagship-card">
                 <div class="project-header">
                     <h3 class="project-title">
-                        Cutting Board for iOS
+                        Cutting Board - Kitchen HQ
                         <span class="tech-icons">
                             <i class="fa-brands fa-swift" title="Swift"></i>
-                            <i class="fa-brands fa-apple" title="iOS"></i>
+                            <i class="fa-brands fa-apple" title="iOS, iPadOS, macOS"></i>
                         </span>
                     </h3>
                     <p class="project-description">
                         <strong>Your Kitchen, Your Rules.</strong><br>
-                        A native iOS companion app for Cutting Board. Built with SwiftUI and SwiftData, it syncs seamlessly with the web platform via the Cutting Board API while offering a robust offline-first experience.
+                        A native recipe manager and kitchen companion for iPhone, iPad, and Mac. Built with SwiftUI and SwiftData, it uses CloudKit for seamless syncing and sharing, ensuring your recipes are always available—even offline.
                         <br><br>
                         <strong>Key Features:</strong>
                         <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem; color: var(--text-color); opacity: 0.9;">
-                            <li><strong>Offline-First:</strong> Access your recipes and shopping lists anywhere, even without an internet connection.</li>
-                            <li><strong>Seamless Sync:</strong> Changes made on your device automatically sync to the cloud when you're back online.</li>
-                            <li><strong>Smart Shopping:</strong> Automatically generate shopping lists from your meal plans.</li>
+                            <li><strong>Universal App:</strong> Optimized experience for iOS, iPadOS, and macOS.</li>
+                            <li><strong>Smart Kitchen:</strong> "Yes, Chef!" Siri commands, cooking timers, and text recognition for importing recipes.</li>
+                            <li><strong>Community:</strong> Share recipes securely via CloudKit Public Database.</li>
                         </ul>
                     </p>
                 </div>
                 <div class="tech-stack">
                     <h4>Tech Stack</h4>
                     <ul>
-                        <li><i class="fa-brands fa-swift" style="width: 20px; color: var(--primary-color);"></i> <strong>Language:</strong> Swift</li>
-                        <li><i class="fa-brands fa-apple" style="width: 20px; color: var(--primary-color);"></i> <strong>Framework:</strong> SwiftUI, SwiftData</li>
-                        <li><i class="fa-solid fa-plug" style="width: 20px; color: var(--primary-color);"></i> <strong>Integration:</strong> Cutting Board API (FastAPI)</li>
-                        <li><i class="fa-solid fa-layer-group" style="width: 20px; color: var(--primary-color);"></i> <strong>Architecture:</strong> MVVM</li>
+                        <li><i class="fa-brands fa-apple" style="width: 20px; color: var(--primary-color);"></i> <strong>Core:</strong> SwiftUI, SwiftData, CloudKit</li>
+                        <li><i class="fa-solid fa-wand-magic-sparkles" style="width: 20px; color: var(--primary-color);"></i> <strong>Intents:</strong> AppIntents (Siri/Shortcuts)</li>
+                        <li><i class="fa-solid fa-eye" style="width: 20px; color: var(--primary-color);"></i> <strong>Vision:</strong> Vision Framework (OCR)</li>
+                        <li><i class="fa-solid fa-cart-shopping" style="width: 20px; color: var(--primary-color);"></i> <strong>Commerce:</strong> StoreKit (IAP)</li>
+                        <li><i class="fa-solid fa-file-code" style="width: 20px; color: var(--primary-color);"></i> <strong>System:</strong> UserNotifications, UTType</li>
                     </ul>
                 </div>
                 <div class="project-links">
@@ -479,12 +480,12 @@
                         <i class="fa-solid fa-globe"></i> Website
                     </a>
                     <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-brands fa-app-store-ios"></i> TestFlight (Coming Soon)
+                        <i class="fa-brands fa-app-store-ios"></i> App Store (Coming Soon)
                     </span>
                 </div>
                 <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-hammer" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Status:</strong> In Development
+                    <i class="fa-solid fa-flask" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
+                    <strong>Status:</strong> TestFlight Beta
                 </div>
             </div>
 
@@ -688,44 +689,7 @@
                 </div>
             </div>
 
-            <!-- Cutting Board (Legacy Web App) -->
-            <div class="project-card" style="opacity: 0.7;">
-                <div class="project-header">
-                    <h3 class="project-title">
-                        Cutting Board (Legacy Web App)
-                        <span class="tech-icons">
-                            <i class="fa-brands fa-python" title="Python"></i>
-                            <i class="fa-solid fa-database" title="PostgreSQL"></i>
-                            <i class="fa-brands fa-js" title="JavaScript"></i>
-                        </span>
-                    </h3>
-                    <p class="project-description">
-                        The original prototype for Cutting Board. A kitchen companion web app for saving recipes and tracking ingredients. This project has been superseded by the native iOS app and is now in maintenance mode.
-                    </p>
-                </div>
-                <div class="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Backend:</strong> Python 3.11+, FastAPI, Uvicorn</li>
-                        <li><i class="fa-solid fa-database" style="width: 20px; color: var(--primary-color);"></i> <strong>Database:</strong> PostgreSQL with SQLAlchemy ORM</li>
-                        <li><i class="fa-brands fa-js" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Jinja2 templates + Vanilla JavaScript (ES6+)</li>
-                        <li><i class="fa-brands fa-css3-alt" style="width: 20px; color: var(--primary-color);"></i> <strong>Styling:</strong> Custom CSS3 with CSS Variables (Light/Dark mode)</li>
-                        <li><i class="fa-solid fa-lock" style="width: 20px; color: var(--primary-color);"></i> <strong>Auth:</strong> OAuth2 with JWT stateless sessions</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/DustinOlsen/CuttingBoardWeb" class="github-link" target="_blank">
-                        <i class="fa-brands fa-github"></i> View Code
-                    </a>
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-archive"></i> Deprecated
-                    </span>
-                </div>
-                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-box-archive" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Status:</strong> Deprecated
-                </div>
-            </div>
+
 
             <!-- Cutting Board Site + API -->
             <div class="project-card">
@@ -752,48 +716,53 @@
                     </ul>
                 </div>
                 <div class="project-links">
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-person-digging"></i> Under Construction
-                    </span>
+                    <a href="https://cuttingboard.v01dworks.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-globe"></i> Visit Website
+                    </a>
                 </div>
                 <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-cone" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Status:</strong> In Development
+                    <i class="fa-solid fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> 
+                    <strong>Status:</strong> Live
                 </div>
             </div>
 
-            <!-- Cutting Board ML API -->
+
+
+
+
+            <!-- v01dworks Photography -->
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">
-                        Cutting Board ML API
+                        v01dworks Photography
                         <span class="tech-icons">
-                            <i class="fa-brands fa-swift" title="Swift"></i>
-                            <i class="fa-solid fa-server" title="Vapor"></i>
-                            <i class="fa-solid fa-brain" title="CoreML"></i>
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
                         </span>
                     </h3>
                     <p class="project-description">
-                        A specialized backend service built with Swift and Vapor to provide intelligent recipe recommendations. It aggregates data from public recipes and privacy-preserving on-device CoreML models to train server-side models, delivering personalized content to users.
+                        A minimalist photography portfolio and blog featuring a masonry gallery layout and a robust admin dashboard. Automatically extracts and displays EXIF metadata from uploaded photos and supports system-aware light/dark theming.
                     </p>
                 </div>
                 <div class="tech-stack">
                     <h4>Tech Stack</h4>
                     <ul>
-                        <li><i class="fa-brands fa-swift" style="width: 20px; color: var(--primary-color);"></i> <strong>Language:</strong> Swift (Server-side)</li>
-                        <li><i class="fa-solid fa-server" style="width: 20px; color: var(--primary-color);"></i> <strong>Framework:</strong> Vapor</li>
-                        <li><i class="fa-solid fa-brain" style="width: 20px; color: var(--primary-color);"></i> <strong>Machine Learning:</strong> CoreML (Training & Inference)</li>
-                        <li><i class="fa-solid fa-share-nodes" style="width: 20px; color: var(--primary-color);"></i> <strong>Data Source:</strong> Public Recipes & On-Device User Data</li>
+                        <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Backend:</strong> Python 3.11+, Flask, Gunicorn</li>
+                        <li><i class="fa-solid fa-database" style="width: 20px; color: var(--primary-color);"></i> <strong>Database:</strong> SQLite with Flask-SQLAlchemy</li>
+                        <li><i class="fa-brands fa-bootstrap" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Jinja2 templates + Bootstrap</li>
+                        <li><i class="fa-brands fa-css3-alt" style="width: 20px; color: var(--primary-color);"></i> <strong>Styling:</strong> Custom CSS3 (Light/Dark mode)</li>
+                        <li><i class="fa-solid fa-image" style="width: 20px; color: var(--primary-color);"></i> <strong>Image Processing:</strong> Pillow (EXIF & HEIC support)</li>
+                        <li><i class="fa-brands fa-docker" style="width: 20px; color: var(--primary-color);"></i> <strong>Infrastructure:</strong> Docker & Nginx</li>
                     </ul>
                 </div>
                 <div class="project-links">
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-code-branch"></i> Internal Service
-                    </span>
-                </div>
-                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-hammer" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Status:</strong> In Development
+                    <a href="https://github.com/DustinOlsen/v01dworksphotography" class="github-link" target="_blank">
+                        <i class="fa-brands fa-github"></i> View Code
+                    </a>
+                    <a href="https://v01dworks.photography" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Site
+                    </a>
                 </div>
             </div>
 
@@ -828,42 +797,6 @@
                     </a>
                     <a href="https://volkan.productions" class="demo-link" target="_blank">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> Client's Site
-                    </a>
-                </div>
-            </div>
-
-            <!-- v01dworks Photography -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">
-                        v01dworks Photography
-                        <span class="tech-icons">
-                            <i class="fa-brands fa-python" title="Python"></i>
-                            <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
-                            <i class="fa-brands fa-docker" title="Docker"></i>
-                        </span>
-                    </h3>
-                    <p class="project-description">
-                        A minimalist photography portfolio and blog featuring a masonry gallery layout and a robust admin dashboard. Automatically extracts and displays EXIF metadata from uploaded photos and supports system-aware light/dark theming.
-                    </p>
-                </div>
-                <div class="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Backend:</strong> Python 3.11+, Flask, Gunicorn</li>
-                        <li><i class="fa-solid fa-database" style="width: 20px; color: var(--primary-color);"></i> <strong>Database:</strong> SQLite with Flask-SQLAlchemy</li>
-                        <li><i class="fa-brands fa-bootstrap" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Jinja2 templates + Bootstrap</li>
-                        <li><i class="fa-brands fa-css3-alt" style="width: 20px; color: var(--primary-color);"></i> <strong>Styling:</strong> Custom CSS3 (Light/Dark mode)</li>
-                        <li><i class="fa-solid fa-image" style="width: 20px; color: var(--primary-color);"></i> <strong>Image Processing:</strong> Pillow (EXIF & HEIC support)</li>
-                        <li><i class="fa-brands fa-docker" style="width: 20px; color: var(--primary-color);"></i> <strong>Infrastructure:</strong> Docker & Nginx</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/DustinOlsen/v01dworksphotography" class="github-link" target="_blank">
-                        <i class="fa-brands fa-github"></i> View Code
-                    </a>
-                    <a href="https://v01dworks.photography" class="demo-link" target="_blank">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Site
                     </a>
                 </div>
             </div>
