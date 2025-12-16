@@ -27,9 +27,11 @@ Here is where I'm documenting my work, and showcasing my projects.
 
 ## Skills
 
-*   **Programming Languages:** Python, JavaScript, Swift, C#, GDScript
-*   **Backend:** FastAPI, PostgreSQL, Docker
-*   **Frontend:** HTML/CSS, Vanilla JS
+*   **Programming Languages:** Swift, Python, JavaScript, C#, GDScript
+*   **Backend:** FastAPI, Vapor, PostgreSQL, Next.js
+*   **Frontend:** HTML/CSS, Vanilla JS, React 
+*   **Apple Platform Development:** iOS, iPadOS, macOS
+*   **Infrastructure:** Docker, Nginx
 
 *   **OS:** Linux, macOS, Windows
 
