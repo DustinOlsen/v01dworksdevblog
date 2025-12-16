@@ -614,6 +614,48 @@
     <section class="projects-section">
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
+            <!-- v01dworksRSS -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">
+                        v01dworksRSS
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-swift" title="Swift"></i>
+                            <i class="fa-brands fa-apple" title="iOS/macOS"></i>
+                            <i class="fa-solid fa-rss" title="RSS"></i>
+                        </span>
+                    </h3>
+                    <p class="project-description">
+                        A modern, privacy-focused RSS reader built for the Apple ecosystem. Designed as a "personal tool" first, it prioritizes speed, clean design, and user control over algorithmic feeds.
+                        <br><br>
+                        <strong>Key Features:</strong>
+                        <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem; color: var(--text-color); opacity: 0.9;">
+                            <li><strong>Universal Access:</strong> Native apps for iOS, iPadOS, and macOS with platform-specific layouts.</li>
+                            <li><strong>Smart Reading:</strong> Distraction-free "Reader Mode" and Text-to-Speech for listening on the go.</li>
+                            <li><strong>Sync:</strong> Seamlessly syncs feeds, articles, and read status via iCloud (CloudKit).</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><i class="fa-brands fa-swift" style="width: 20px; color: var(--primary-color);"></i> <strong>Core:</strong> Swift 6, SwiftUI, SwiftData</li>
+                        <li><i class="fa-brands fa-apple" style="width: 20px; color: var(--primary-color);"></i> <strong>Sync:</strong> CloudKit (via SwiftData)</li>
+                        <li><i class="fa-solid fa-rss" style="width: 20px; color: var(--primary-color);"></i> <strong>Parsing:</strong> XMLParser, Background Tasks</li>
+                        <li><i class="fa-solid fa-volume-high" style="width: 20px; color: var(--primary-color);"></i> <strong>Audio:</strong> AVSpeechSynthesizer</li>
+                        <li><i class="fa-solid fa-cart-shopping" style="width: 20px; color: var(--primary-color);"></i> <strong>Monetization:</strong> StoreKit 2 (Tip Jar)</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
+                        <i class="fa-brands fa-app-store-ios"></i> App Store (Coming Soon)
+                    </span>
+                </div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
+                    <i class="fa-solid fa-hammer" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
+                    <strong>Status:</strong> In Development
+                </div>
+            </div>
             <!-- v01dworks Analytics iOS -->
             <div class="project-card">
                 <div class="project-header">
@@ -649,45 +691,7 @@
                 </div>
             </div>
 
-            <!-- Game Dev Asset Manager -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">
-                        Game Dev Asset Manager
-                        <span class="tech-icons">
-                            <i class="fa-brands fa-python" title="Python"></i>
-                            <i class="fa-solid fa-database" title="PostgreSQL"></i>
-                            <i class="fa-brands fa-js" title="JavaScript"></i>
-                            <i class="fa-brands fa-docker" title="Docker"></i>
-                        </span>
-                    </h3>
-                    <p class="project-description">
-                        A centralized, web-based management system for game developers to organize, store, and retrieve assets (textures, 3D models, audio files, and scripts). Containerized with Docker and featuring a demo instance hosted on my VPS.
-                    </p>
-                </div>
-                <div class="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Backend:</strong> FastAPI (Python 3.11) with async REST API</li>
-                        <li><i class="fa-solid fa-database" style="width: 20px; color: var(--primary-color);"></i> <strong>Database:</strong> PostgreSQL with SQLAlchemy ORM</li>
-                        <li><i class="fa-brands fa-js" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Vanilla JavaScript, HTML5, CSS3</li>
-                        <li><i class="fa-brands fa-docker" style="width: 20px; color: var(--primary-color);"></i> <strong>Deployment:</strong> Dockerized with Docker Compose</li>
-                        <li><i class="fa-solid fa-lock" style="width: 20px; color: var(--primary-color);"></i> <strong>Auth:</strong> JWT tokens with secure password hashing</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/DustinOlsen/GameDevAssetCatalogue" class="github-link" target="_blank">
-                        <i class="fa-brands fa-github"></i> View Code
-                    </a>
-                    <a href="https://demo.v01dworks.com" class="demo-link" target="_blank">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                    </a>
-                </div>
-                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
-                    <i class="fa-solid fa-key" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
-                    <strong>Demo Login:</strong> test / test
-                </div>
-            </div>
+
 
 
 
@@ -798,6 +802,46 @@
                     <a href="https://volkan.productions" class="demo-link" target="_blank">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> Client's Site
                     </a>
+                </div>
+            </div>
+
+            <!-- Game Dev Asset Manager -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">
+                        Game Dev Asset Manager
+                        <span class="tech-icons">
+                            <i class="fa-brands fa-python" title="Python"></i>
+                            <i class="fa-solid fa-database" title="PostgreSQL"></i>
+                            <i class="fa-brands fa-js" title="JavaScript"></i>
+                            <i class="fa-brands fa-docker" title="Docker"></i>
+                        </span>
+                    </h3>
+                    <p class="project-description">
+                        A centralized, web-based management system for game developers to organize, store, and retrieve assets (textures, 3D models, audio files, and scripts). Containerized with Docker and featuring a demo instance hosted on my VPS.
+                    </p>
+                </div>
+                <div class="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><i class="fa-brands fa-python" style="width: 20px; color: var(--primary-color);"></i> <strong>Backend:</strong> FastAPI (Python 3.11) with async REST API</li>
+                        <li><i class="fa-solid fa-database" style="width: 20px; color: var(--primary-color);"></i> <strong>Database:</strong> PostgreSQL with SQLAlchemy ORM</li>
+                        <li><i class="fa-brands fa-js" style="width: 20px; color: var(--primary-color);"></i> <strong>Frontend:</strong> Vanilla JavaScript, HTML5, CSS3</li>
+                        <li><i class="fa-brands fa-docker" style="width: 20px; color: var(--primary-color);"></i> <strong>Deployment:</strong> Dockerized with Docker Compose</li>
+                        <li><i class="fa-solid fa-lock" style="width: 20px; color: var(--primary-color);"></i> <strong>Auth:</strong> JWT tokens with secure password hashing</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/DustinOlsen/GameDevAssetCatalogue" class="github-link" target="_blank">
+                        <i class="fa-brands fa-github"></i> View Code
+                    </a>
+                    <a href="https://demo.v01dworks.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                </div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
+                    <i class="fa-solid fa-key" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
+                    <strong>Demo Login:</strong> test / test
                 </div>
             </div>
 
