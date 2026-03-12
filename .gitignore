@@ -9,3 +9,4 @@ venv/
 .env
 
 API_DOCUMENTATION.md
+apps/home/TODO.md
