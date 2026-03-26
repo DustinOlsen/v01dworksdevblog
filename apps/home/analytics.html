@@ -295,8 +295,8 @@
         function renderHistoryChart(history) {
             const ctx = document.getElementById('historyChart').getContext('2d');
             
-            // Generate last 14 days
-            const days = 14;
+            // Generate last 30 days (matches API history window)
+            const days = 30;
             const labels = [];
             const visitsData = [];
             const uniqueData = [];
@@ -393,6 +393,28 @@
                             <div class="stat-value">${formatNumber(data.unique_visitors || 0)}</div>
                         </div>
                     </div>
+
+                    <!-- Bot Summary Cards -->
+                    ${data.bot_summary ? `
+                    <div class="stats-grid" style="margin-bottom: 2rem;">
+                        <div class="stat-card" style="border-left: 3px solid #f59e0b;">
+                            <h3><i class="fa-solid fa-robot" style="margin-right: 0.4rem; color: #f59e0b;"></i> Total Bot Visits</h3>
+                            <div class="stat-value" style="color: #f59e0b;">${formatNumber(data.bot_summary.total_bot_visits || 0)}</div>
+                        </div>
+                        <div class="stat-card" style="border-left: 3px solid #a78bfa;">
+                            <h3><i class="fa-solid fa-spider" style="margin-right: 0.4rem; color: #a78bfa;"></i> Total Crawler Visits</h3>
+                            <div class="stat-value" style="color: #a78bfa;">${formatNumber(data.bot_summary.total_crawler_visits || 0)}</div>
+                        </div>
+                        <div class="stat-card" style="border-left: 3px solid #f59e0b;">
+                            <h3><i class="fa-solid fa-robot" style="margin-right: 0.4rem; color: #f59e0b;"></i> Bots Today</h3>
+                            <div class="stat-value" style="color: #f59e0b;">${formatNumber(data.bot_summary.bots_today || 0)}</div>
+                        </div>
+                        <div class="stat-card" style="border-left: 3px solid #a78bfa;">
+                            <h3><i class="fa-solid fa-spider" style="margin-right: 0.4rem; color: #a78bfa;"></i> Crawlers Today</h3>
+                            <div class="stat-value" style="color: #a78bfa;">${formatNumber(data.bot_summary.crawlers_today || 0)}</div>
+                        </div>
+                    </div>
+                    ` : ''}
 
                     <!-- History Chart -->
                     <div class="data-card" style="margin-bottom: 2rem;">
