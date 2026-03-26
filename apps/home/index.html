@@ -6,22 +6,76 @@
     
     <!-- SEO Meta Tags -->
     <title>v01dworks - Apple & Web Development Portfolio</title>
-    <meta name="description" content="Portfolio of v01dworks. Specializing in native macOS/iOS development with Swift and modern web platforms. Creator of MarkLab Editor, SwiftWire, WhatNext, and FollowTheCredits.">
-    <meta name="keywords" content="Swift, SwiftUI, macOS Development, iOS Development, Web Development, RSS Reader, Markdown Editor, Media Tracker, WhatNext, FollowTheCredits, MarkLab, v01dworks">
+    <meta name="description" content="Portfolio of v01dworks. Native macOS/iOS developer specializing in Swift and SwiftUI. Creator of MarkLab Editor (App Store), SwiftWire, WhatNext, FollowTheCredits, HelloPass, and Cutting Board.">
+    <meta name="keywords" content="Swift, SwiftUI, macOS Development, iOS Development, Web Development, RSS Reader, Markdown Editor, Media Tracker, WhatNext, FollowTheCredits, MarkLab, MarkLab Editor, HelloPass, Cutting Board, App Store, v01dworks, Dustin Olsen">
     <meta name="author" content="v01dworks">
-    <link rel="canonical" href="https://v01dworks.com" />
+    <link rel="canonical" href="https://v01dworks.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://v01dworks.com/">
     <meta property="og:title" content="v01dworks - Apple & Web Development Portfolio">
-    <meta property="og:description" content="Portfolio of v01dworks. Specializing in native macOS/iOS development with Swift and modern web platforms. Creator of MarkLab Editor, SwiftWire, WhatNext, and FollowTheCredits.">
+    <meta property="og:description" content="Native macOS/iOS developer specializing in Swift and SwiftUI. Creator of MarkLab Editor (App Store), SwiftWire, WhatNext, FollowTheCredits, HelloPass, and Cutting Board.">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="summary">
     <meta property="twitter:url" content="https://v01dworks.com/">
     <meta property="twitter:title" content="v01dworks - Apple & Web Development Portfolio">
-    <meta property="twitter:description" content="Portfolio of v01dworks. Specializing in native macOS/iOS development with Swift and modern web platforms. Creator of MarkLab Editor, SwiftWire, WhatNext, and FollowTheCredits.">
+    <meta property="twitter:description" content="Native macOS/iOS developer specializing in Swift and SwiftUI. Creator of MarkLab Editor (App Store), SwiftWire, WhatNext, FollowTheCredits, HelloPass, and Cutting Board.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://v01dworks.com/#website",
+          "url": "https://v01dworks.com/",
+          "name": "v01dworks",
+          "description": "Apple & Web Development Portfolio"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://v01dworks.com/#person",
+          "name": "Dustin Olsen",
+          "alternateName": "v01dworks",
+          "url": "https://v01dworks.com/",
+          "jobTitle": "iOS & macOS Developer",
+          "sameAs": [
+            "https://github.com/DustinOlsen",
+            "https://www.linkedin.com/in/dustin-olsen-71bb1b378",
+            "https://mastodon.social/@v01dworks"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "MarkLab Editor",
+          "operatingSystem": "macOS",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://marklabeditor.v01dworks.com",
+          "downloadUrl": "https://apps.apple.com/us/app/marklab-editor/id6760020575",
+          "author": { "@id": "https://v01dworks.com/#person" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "SwiftWire - RSS Reader",
+          "operatingSystem": "iOS",
+          "applicationCategory": "NewsApplication",
+          "downloadUrl": "https://apps.apple.com/us/app/swiftwire-rss-reader/id6760581651",
+          "author": { "@id": "https://v01dworks.com/#person" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Cutting Board - Kitchen HQ",
+          "operatingSystem": "iOS",
+          "applicationCategory": "LifestyleApplication",
+          "downloadUrl": "https://apps.apple.com/us/app/cutting-board-kitchen-hq/id6756414539",
+          "author": { "@id": "https://v01dworks.com/#person" }
+        }
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -631,9 +685,9 @@
                     </ul>
                 </div>
                 <div class="project-links">
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-code"></i> In Development
-                    </span>
+                    <a href="https://whatnext.followthecredits.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-globe"></i> Website
+                    </a>
                 </div>
                 <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
                     <i class="fa-solid fa-code" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
@@ -788,9 +842,9 @@
                     </ul>
                 </div>
                 <div class="project-links">
-                    <span style="flex: 1; text-align: center; padding: 0.75rem; border-radius: 8px; background: rgba(0,0,0,0.05); color: var(--text-color); font-weight: 600; cursor: default; opacity: 0.7;">
-                        <i class="fa-solid fa-code"></i> In Development
-                    </span>
+                    <a href="https://followthecredits.com" class="demo-link" target="_blank">
+                        <i class="fa-solid fa-globe"></i> Website
+                    </a>
                 </div>
                 <div style="padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.03); border-top: 1px solid var(--border-color); font-size: 0.85rem; text-align: center; color: var(--text-color);">
                     <i class="fa-solid fa-code" style="color: var(--accent-color); margin-right: 0.5rem;"></i> 
