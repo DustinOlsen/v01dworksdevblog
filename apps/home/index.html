@@ -108,6 +108,10 @@
             --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --accent-color: #0284c7;
             --border-color: #e2e8f0;
+            --cta-primary-bg: #0f172a;
+            --cta-primary-text: #ffffff;
+            --heading-chip-bg: rgba(255, 255, 255, 0.82);
+            --heading-chip-border: rgba(148, 163, 184, 0.35);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -120,6 +124,10 @@
                 --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
                 --accent-color: #7dd3fc;
                 --border-color: #334155;
+                --cta-primary-bg: #38bdf8;
+                --cta-primary-text: #082f49;
+                --heading-chip-bg: rgba(15, 23, 42, 0.8);
+                --heading-chip-border: rgba(125, 211, 252, 0.35);
             }
         }
 
@@ -234,6 +242,12 @@
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             letter-spacing: -0.025em;
+            display: inline-block;
+            background: var(--heading-chip-bg);
+            border: 1px solid var(--heading-chip-border);
+            border-radius: 12px;
+            padding: 0.15rem 0.75rem;
+            box-shadow: var(--card-shadow);
         }
         .subtitle {
             font-size: 1.2rem;
@@ -269,9 +283,9 @@
         }
 
         .hero-cta-primary {
-            background: var(--heading-color);
-            color: #ffffff;
-            border: 2px solid var(--heading-color);
+            background: var(--cta-primary-bg);
+            color: var(--cta-primary-text);
+            border: 2px solid var(--cta-primary-bg);
         }
 
         .hero-cta-secondary {
@@ -353,6 +367,14 @@
             color: var(--heading-color);
             margin-bottom: 2rem;
             text-align: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--heading-chip-bg);
+            border: 1px solid var(--heading-chip-border);
+            border-radius: 12px;
+            padding: 0.35rem 0.9rem;
+            box-shadow: var(--card-shadow);
         }
         .projects-grid {
             display: grid;
