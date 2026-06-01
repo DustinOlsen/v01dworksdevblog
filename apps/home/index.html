@@ -298,6 +298,50 @@
             text-align: center;
             font-weight: 600;
         }
+
+        .hero-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-copy {
+            min-width: 0;
+        }
+
+        .profile-wrap {
+            justify-self: end;
+            width: 100%;
+            max-width: 280px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(4px);
+        }
+
+        .profile-photo {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center 25%;
+            border-radius: 14px;
+            border: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .profile-label {
+            margin-top: 0.6rem;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
         
         /* Project Cards */
         .projects-section {
@@ -562,6 +606,14 @@
                 width: 100%;
                 text-align: center;
             }
+            .hero-intro {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .profile-wrap {
+                justify-self: start;
+                max-width: 220px;
+            }
             .social-buttons-grid {
                 grid-template-columns: 1fr;
             }
@@ -588,12 +640,20 @@
     </div>
 
     <div class="container">
-    <h1>v01dworks</h1>
-    <p class="subtitle">I ship native Apple apps and supporting backend platforms with a focus on product quality, privacy, and long-term maintainability.</p>
-    <div class="hero-cta">
-        <a href="mailto:Dustin@v01dworks.com?subject=Project%20Inquiry" class="hero-cta-primary">Get In Touch</a>
-        <a href="https://www.linkedin.com/in/dustin-olsen-71bb1b378" class="hero-cta-secondary" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-    </div>
+    <section class="hero-intro" aria-label="Introduction">
+        <div class="hero-copy">
+            <h1>v01dworks</h1>
+            <p class="subtitle">I ship native Apple apps and supporting backend platforms with a focus on product quality, privacy, and long-term maintainability.</p>
+            <div class="hero-cta">
+                <a href="mailto:Dustin@v01dworks.com?subject=Project%20Inquiry" class="hero-cta-primary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/dustin-olsen-71bb1b378" class="hero-cta-secondary" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+            </div>
+        </div>
+        <figure class="profile-wrap">
+            <img src="assets/images/profile-picture.jpeg" alt="Portrait of Dustin Olsen" class="profile-photo" loading="eager" decoding="async">
+            <figcaption class="profile-label">Dustin Olsen</figcaption>
+        </figure>
+    </section>
     <div class="proof-strip" aria-label="Portfolio highlights">
         <div class="proof-item">5 shipped App Store apps</div>
         <div class="proof-item">Apple-first: iOS, iPadOS, and macOS</div>
