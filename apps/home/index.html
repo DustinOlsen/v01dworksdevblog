@@ -16,12 +16,15 @@
     <meta property="og:url" content="https://v01dworks.com/">
     <meta property="og:title" content="v01dworks - Apple & Web Development Portfolio">
     <meta property="og:description" content="Native macOS/iOS developer specializing in Swift and SwiftUI. Creator of Cutting Board, MarkLab Editor, SwiftWire, HelloPass, CVLab, WhatNext, and FollowTheCredits.">
+    <meta property="og:image" content="https://v01dworks.com/assets/images/social-preview.svg">
+    <meta property="og:image:alt" content="v01dworks portfolio preview featuring Apple and web development projects">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://v01dworks.com/">
     <meta property="twitter:title" content="v01dworks - Apple & Web Development Portfolio">
     <meta property="twitter:description" content="Native macOS/iOS developer specializing in Swift and SwiftUI. Creator of Cutting Board, MarkLab Editor, SwiftWire, HelloPass, CVLab, WhatNext, and FollowTheCredits.">
+    <meta property="twitter:image" content="https://v01dworks.com/assets/images/social-preview.svg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -243,6 +246,57 @@
             border-radius: 8px;
             display: inline-block;
             backdrop-filter: blur(4px);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: -1.5rem 0 1.75rem;
+        }
+
+        .hero-cta a {
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 0.75rem 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+        }
+
+        .hero-cta-primary {
+            background: var(--heading-color);
+            color: #ffffff;
+            border: 2px solid var(--heading-color);
+        }
+
+        .hero-cta-secondary {
+            background: var(--card-bg);
+            color: var(--heading-color);
+            border: 2px solid var(--border-color);
+        }
+
+        .proof-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .proof-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 0.85rem 1rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            text-align: center;
+            font-weight: 600;
         }
         
         /* Project Cards */
@@ -500,6 +554,14 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+            .hero-cta {
+                margin-top: -1rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero-cta a {
+                width: 100%;
+                text-align: center;
+            }
             .social-buttons-grid {
                 grid-template-columns: 1fr;
             }
@@ -517,8 +579,9 @@
                     <li><a href="about.html">About Me</a></li>
                     <!-- <li><a href="/blogs/index.html?category=backend">Backend Blog</a></li> -->
                     <!-- <li><a href="/blogs/index.html?category=tech">Tech Blog</a></li> -->
-                    <li><button id="theme-toggle" class="theme-btn" title="Toggle Time-Based Theme"><i class="fa-solid fa-clock"></i></button></li>
-                    <li><button id="theme-cycle" class="theme-btn" title="Cycle Themes (Debug)"><i class="fa-solid fa-palette"></i></button></li>
+                    <li><a href="mailto:Dustin@v01dworks.com?subject=Project%20Inquiry">Hire Me</a></li>
+                    <li><button id="theme-toggle" class="theme-btn" title="Toggle Time-Based Theme" aria-label="Toggle time-based theme"><i class="fa-solid fa-clock"></i></button></li>
+                    <li><button id="theme-cycle" class="theme-btn" title="Cycle Themes (Debug)" aria-label="Cycle available themes for preview"><i class="fa-solid fa-palette"></i></button></li>
                 </ul>
             </nav>
         </div>
@@ -526,7 +589,16 @@
 
     <div class="container">
     <h1>v01dworks</h1>
-    <p class="subtitle">Independent Developer building native apps for the Apple Ecosystem and modern web platforms.</p>
+    <p class="subtitle">I ship native Apple apps and supporting backend platforms with a focus on product quality, privacy, and long-term maintainability.</p>
+    <div class="hero-cta">
+        <a href="mailto:Dustin@v01dworks.com?subject=Project%20Inquiry" class="hero-cta-primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/dustin-olsen-71bb1b378" class="hero-cta-secondary" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+    </div>
+    <div class="proof-strip" aria-label="Portfolio highlights">
+        <div class="proof-item">5 shipped App Store apps</div>
+        <div class="proof-item">Apple-first: iOS, iPadOS, and macOS</div>
+        <div class="proof-item">Full-stack delivery: SwiftUI + FastAPI</div>
+    </div>
     
     <!-- Apple Ecosystem Section -->
     <section class="flagship-section">
@@ -1127,7 +1199,7 @@
             <!-- Support -->
             <div style="text-align: center;">
                 <p style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-color); opacity: 0.8;">If you like what I do, consider buying me a coffee!</p>
-                <a href="#" class="social-btn btn-kofi" style="width: 100%; max-width: 200px;" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-mug-hot"></i> Support on Ko-Fi</a>
+                <a href="mailto:Dustin@v01dworks.com?subject=Support%20v01dworks" class="social-btn btn-kofi" style="width: 100%; max-width: 240px;"><i class="fa-solid fa-heart"></i> Sponsor My Work</a>
             </div>
         </div>
     </section>
