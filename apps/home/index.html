@@ -113,13 +113,13 @@
             --heading-chip-bg: rgba(255, 255, 255, 0.82);
             --heading-chip-border: rgba(148, 163, 184, 0.35);
             --scroll-progress: 0;
-            --bg-tilt: 0deg;
-            --bg-shift-y: 0px;
-            --bg-shift-x: 0px;
+            --bg-hue-shift: 0deg;
             --bg-saturate: 1;
-            --bg-tilt-secondary: 0deg;
-            --bg-shift-y-secondary: 0px;
-            --bg-shift-x-secondary: 0px;
+            --bg-brightness: 1;
+            --bg-accent-hue: 200;
+            --bg-accent-2-hue: 224;
+            --bg-glow-alpha: 0.26;
+            --bg-glow-alpha-2: 0.2;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -156,35 +156,34 @@
         body::before {
             content: "";
             position: fixed;
-            inset: -20%;
+            inset: 0;
             z-index: 0;
             pointer-events: none;
-            opacity: 1;
+            opacity: 0.95;
             background:
-                radial-gradient(60% 58% at 15% 14%, rgba(255, 255, 255, 0.4), transparent 56%),
-                radial-gradient(54% 52% at 86% 74%, rgba(14, 165, 233, 0.42), transparent 62%),
-                conic-gradient(from calc(var(--scroll-progress) * 280deg) at 52% 48%, rgba(255, 255, 255, 0.16), rgba(14, 165, 233, 0.12), rgba(255, 255, 255, 0.16)),
+                radial-gradient(64% 62% at 15% 14%, hsla(var(--bg-accent-hue), 90%, 70%, var(--bg-glow-alpha)), transparent 58%),
+                radial-gradient(58% 56% at 86% 74%, hsla(var(--bg-accent-2-hue), 88%, 64%, var(--bg-glow-alpha-2)), transparent 60%),
+                conic-gradient(from calc(var(--scroll-progress) * 240deg) at 50% 48%, hsla(var(--bg-accent-hue), 80%, 70%, 0.15), hsla(var(--bg-accent-2-hue), 82%, 62%, 0.12), hsla(var(--bg-accent-hue), 80%, 70%, 0.15)),
                 var(--bg-color);
-            transform: translate3d(var(--bg-shift-x), var(--bg-shift-y), 0) rotate(var(--bg-tilt)) scale(1.13);
-            filter: saturate(var(--bg-saturate));
-            transition: transform 80ms linear, filter 80ms linear;
-            will-change: transform;
+            filter: hue-rotate(var(--bg-hue-shift)) saturate(var(--bg-saturate)) brightness(var(--bg-brightness));
+            transition: filter 90ms linear, opacity 90ms linear;
+            will-change: filter;
         }
 
         body::after {
             content: "";
             position: fixed;
-            inset: -25%;
+            inset: 0;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.78;
+            opacity: 0.58;
             background:
-                radial-gradient(50% 52% at 28% 80%, rgba(255, 255, 255, 0.26), transparent 58%),
-                radial-gradient(56% 58% at 76% 24%, rgba(2, 132, 199, 0.34), transparent 62%);
-            transform: translate3d(var(--bg-shift-x-secondary), var(--bg-shift-y-secondary), 0) rotate(var(--bg-tilt-secondary)) scale(1.18);
-            transition: transform 80ms linear;
-            will-change: transform;
-            mix-blend-mode: screen;
+                radial-gradient(52% 54% at 22% 76%, hsla(calc(var(--bg-accent-hue) + 18), 88%, 74%, 0.22), transparent 58%),
+                radial-gradient(58% 58% at 78% 24%, hsla(calc(var(--bg-accent-2-hue) - 20), 86%, 60%, 0.22), transparent 60%);
+            filter: hue-rotate(calc(var(--bg-hue-shift) * -0.7)) saturate(calc(var(--bg-saturate) * 1.08));
+            transition: filter 90ms linear, opacity 90ms linear;
+            will-change: filter;
+            mix-blend-mode: soft-light;
         }
 
         body > * {
@@ -195,11 +194,9 @@
         @media (prefers-reduced-motion: reduce) {
             body::before {
                 transition: none;
-                transform: none;
             }
             body::after {
                 transition: none;
-                transform: none;
             }
         }
         
@@ -1429,13 +1426,13 @@
                 const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
                 root.style.setProperty('--scroll-progress', progress.toFixed(4));
-                root.style.setProperty('--bg-tilt', `${(progress * 22 - 11).toFixed(2)}deg`);
-                root.style.setProperty('--bg-shift-y', `${(progress * -320).toFixed(1)}px`);
-                root.style.setProperty('--bg-shift-x', `${(progress * 180 - 90).toFixed(1)}px`);
-                root.style.setProperty('--bg-saturate', (1 + progress * 0.45).toFixed(3));
-                root.style.setProperty('--bg-tilt-secondary', `${(progress * -16 + 8).toFixed(2)}deg`);
-                root.style.setProperty('--bg-shift-y-secondary', `${(progress * 260 - 130).toFixed(1)}px`);
-                root.style.setProperty('--bg-shift-x-secondary', `${(progress * -220 + 110).toFixed(1)}px`);
+                root.style.setProperty('--bg-hue-shift', `${(progress * 90 - 45).toFixed(2)}deg`);
+                root.style.setProperty('--bg-saturate', (1.05 + progress * 0.35).toFixed(3));
+                root.style.setProperty('--bg-brightness', (0.96 + progress * 0.2).toFixed(3));
+                root.style.setProperty('--bg-accent-hue', (190 + progress * 80).toFixed(2));
+                root.style.setProperty('--bg-accent-2-hue', (236 - progress * 70).toFixed(2));
+                root.style.setProperty('--bg-glow-alpha', (0.2 + progress * 0.28).toFixed(3));
+                root.style.setProperty('--bg-glow-alpha-2', (0.16 + progress * 0.24).toFixed(3));
                 scrollRafPending = false;
             }
 
