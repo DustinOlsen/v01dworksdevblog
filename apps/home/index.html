@@ -112,6 +112,9 @@
             --cta-primary-text: #ffffff;
             --heading-chip-bg: rgba(255, 255, 255, 0.82);
             --heading-chip-border: rgba(148, 163, 184, 0.35);
+            --scroll-progress: 0;
+            --bg-tilt: 0deg;
+            --bg-shift-y: 0px;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -140,6 +143,37 @@
             min-height: 100vh;
             line-height: 1.6;
             transition: background 0.5s ease, color 0.3s;
+            position: relative;
+            overflow-x: hidden;
+            isolation: isolate;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -20%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.92;
+            background:
+                radial-gradient(60% 60% at 20% 20%, rgba(255, 255, 255, 0.18), transparent 60%),
+                radial-gradient(50% 50% at 80% 70%, rgba(14, 165, 233, 0.22), transparent 65%),
+                var(--bg-color);
+            transform: translate3d(0, var(--bg-shift-y), 0) rotate(var(--bg-tilt)) scale(1.08);
+            transition: transform 120ms linear;
+            will-change: transform;
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::before {
+                transition: none;
+                transform: none;
+            }
         }
         
         /* Theme Classes - Only set background gradient */
@@ -1355,11 +1389,23 @@
             const themeCycleBtn = document.getElementById('theme-cycle');
             const greetingSpan = document.getElementById('greeting');
             const body = document.body;
+            const root = document.documentElement;
+            let scrollRafPending = false;
             
             const themes = [
                 'theme-pre-sunrise', 'theme-dawn', 'theme-afternoon', 
                 'theme-sunset', 'theme-dusk', 'theme-night'
             ];
+
+            function updateScrollGradient() {
+                const maxScroll = root.scrollHeight - window.innerHeight;
+                const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
+                root.style.setProperty('--scroll-progress', progress.toFixed(4));
+                root.style.setProperty('--bg-tilt', `${(progress * 8 - 4).toFixed(2)}deg`);
+                root.style.setProperty('--bg-shift-y', `${(progress * -80).toFixed(1)}px`);
+                scrollRafPending = false;
+            }
 
             // Time ranges for themes
             function getThemeForTime(hour) {
@@ -1442,6 +1488,15 @@
 
             // Initial Apply
             applyTheme();
+            updateScrollGradient();
+
+            window.addEventListener('scroll', () => {
+                if (scrollRafPending) return;
+                scrollRafPending = true;
+                requestAnimationFrame(updateScrollGradient);
+            }, { passive: true });
+
+            window.addEventListener('resize', updateScrollGradient);
 
             // Update every minute to catch time changes
             setInterval(() => {
