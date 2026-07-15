@@ -115,8 +115,11 @@
             --scroll-progress: 0;
             --bg-tilt: 0deg;
             --bg-shift-y: 0px;
+            --bg-shift-x: 0px;
+            --bg-saturate: 1;
             --bg-tilt-secondary: 0deg;
             --bg-shift-y-secondary: 0px;
+            --bg-shift-x-secondary: 0px;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -156,13 +159,15 @@
             inset: -20%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.98;
+            opacity: 1;
             background:
-                radial-gradient(62% 62% at 18% 18%, rgba(255, 255, 255, 0.3), transparent 60%),
-                radial-gradient(50% 50% at 82% 70%, rgba(14, 165, 233, 0.35), transparent 65%),
+                radial-gradient(60% 58% at 15% 14%, rgba(255, 255, 255, 0.4), transparent 56%),
+                radial-gradient(54% 52% at 86% 74%, rgba(14, 165, 233, 0.42), transparent 62%),
+                conic-gradient(from calc(var(--scroll-progress) * 280deg) at 52% 48%, rgba(255, 255, 255, 0.16), rgba(14, 165, 233, 0.12), rgba(255, 255, 255, 0.16)),
                 var(--bg-color);
-            transform: translate3d(0, var(--bg-shift-y), 0) rotate(var(--bg-tilt)) scale(1.1);
-            transition: transform 120ms linear;
+            transform: translate3d(var(--bg-shift-x), var(--bg-shift-y), 0) rotate(var(--bg-tilt)) scale(1.13);
+            filter: saturate(var(--bg-saturate));
+            transition: transform 80ms linear, filter 80ms linear;
             will-change: transform;
         }
 
@@ -172,14 +177,14 @@
             inset: -25%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.65;
+            opacity: 0.78;
             background:
-                radial-gradient(48% 50% at 30% 78%, rgba(255, 255, 255, 0.18), transparent 62%),
-                radial-gradient(52% 55% at 74% 26%, rgba(2, 132, 199, 0.26), transparent 64%);
-            transform: translate3d(0, var(--bg-shift-y-secondary), 0) rotate(var(--bg-tilt-secondary)) scale(1.12);
-            transition: transform 120ms linear;
+                radial-gradient(50% 52% at 28% 80%, rgba(255, 255, 255, 0.26), transparent 58%),
+                radial-gradient(56% 58% at 76% 24%, rgba(2, 132, 199, 0.34), transparent 62%);
+            transform: translate3d(var(--bg-shift-x-secondary), var(--bg-shift-y-secondary), 0) rotate(var(--bg-tilt-secondary)) scale(1.18);
+            transition: transform 80ms linear;
             will-change: transform;
-            mix-blend-mode: soft-light;
+            mix-blend-mode: screen;
         }
 
         body > * {
@@ -1424,10 +1429,13 @@
                 const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
                 root.style.setProperty('--scroll-progress', progress.toFixed(4));
-                root.style.setProperty('--bg-tilt', `${(progress * 14 - 7).toFixed(2)}deg`);
-                root.style.setProperty('--bg-shift-y', `${(progress * -220).toFixed(1)}px`);
-                root.style.setProperty('--bg-tilt-secondary', `${(progress * -10 + 5).toFixed(2)}deg`);
-                root.style.setProperty('--bg-shift-y-secondary', `${(progress * 150).toFixed(1)}px`);
+                root.style.setProperty('--bg-tilt', `${(progress * 22 - 11).toFixed(2)}deg`);
+                root.style.setProperty('--bg-shift-y', `${(progress * -320).toFixed(1)}px`);
+                root.style.setProperty('--bg-shift-x', `${(progress * 180 - 90).toFixed(1)}px`);
+                root.style.setProperty('--bg-saturate', (1 + progress * 0.45).toFixed(3));
+                root.style.setProperty('--bg-tilt-secondary', `${(progress * -16 + 8).toFixed(2)}deg`);
+                root.style.setProperty('--bg-shift-y-secondary', `${(progress * 260 - 130).toFixed(1)}px`);
+                root.style.setProperty('--bg-shift-x-secondary', `${(progress * -220 + 110).toFixed(1)}px`);
                 scrollRafPending = false;
             }
 
